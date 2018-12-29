@@ -18,7 +18,7 @@ client.on('ready', function(){
             j = -1;
         }
         i = i+j;
-        client.user.setGame(setGame[i],`http://www.twitch.tv/اسم حسابك بتويتش`);
+        client.user.setGame(setGame[i],`http://www.twitch.tv/v5bz`);
     }, ms);
     
 });
