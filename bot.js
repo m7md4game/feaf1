@@ -7,7 +7,7 @@ client.on('ready', () => {
 
 client.on('ready', function(){
     var ms = 10000 ;
-    var setActivity = ['$help | $invite'];
+    var setGame = ['$help | $invite'];
     var i = -1;
     var j = 0;
     setInterval(function (){
