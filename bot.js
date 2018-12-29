@@ -7,25 +7,7 @@ client.on('ready', () => {
 
 // playing
 client.on('ready', () => {                           
-client.user.setGame(`$help | $invite`,'https://www.twitch.tv/v5bz');                                                                                                                                                                                                                                                                                                                                                                                                                             client.user.setGame(`-help | On 20 Servers`,'https://www.twitch.tv/v5bz');
-});
-
-client.on('ready', function(){
-    var ms = 10000 ;
-    var setGame = ['$help | $invite'];
-    var i = -1;
-    var j = 0;
-    setInterval(function (){
-        if( i == -1 ){
-            j = 1;
-        }
-        if( i == (setGame.length)-1 ){
-            j = -1;
-        }
-        i = i+j;
-        client.user.setGame(setGame[i],`http://www.twitch.tv/v5bz`);
-    }, ms);
-    
+client.user.setGame(`$help`,'https://www.twitch.tv/v5bz');                                                                                                                                                                                                                                                                                                                                                                                                                             client.user.setGame(`-help | On 20 Servers`,'https://www.twitch.tv/v5bz');
 });
 
 client.on('message', msg => {
