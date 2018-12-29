@@ -199,7 +199,7 @@ https://discordapp.com/oauth2/authorize?&client_id=526465331997442048&scope=bot&
 『$تطلب يد وحدة وتشوف اذا تقبل او لا / زواج』
 『$يعطيك شعر عن الحب / حب』
 『$يخيرك بين شي وشي / لو خيروك』
-『$يعطيك عقاب ولازم تنفذه』
+『$عقاب / يعطيك عقاب ولازم تنفذه』
 『$يسالك سؤال ولازم تجاوب / كت تويت』
 『$rps / حجرة ورقة مقص』
 **
@@ -212,7 +212,7 @@ message.author.sendEmbed(embed)
 }); 
 
 client.on("message", message => {
- if (message.content === "!help") {
+ if (message.content === "!help-ad") {
   const embed = new Discord.RichEmbed() 
       .setColor("#ffff00")
       .setThumbnail(message.author.avatarURL)
