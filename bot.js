@@ -5,6 +5,11 @@ client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
 });
 
+// playing
+client.on('ready', () => {                           
+client.user.setGame(`$help | $invite`,'https://www.twitch.tv/m7md4game123');                                                                                                                                                                                                                                                                                                                                                                                                                             client.user.setGame(`-help | On 20 Servers`,'https://www.twitch.tv/v5bz');
+});
+
 client.on('ready', function(){
     var ms = 10000 ;
     var setGame = ['$help | $invite'];
