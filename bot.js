@@ -751,14 +751,6 @@ client.on('message', function(message) {
 
 });
 
-function skip_song(message) {
-
-    if (!message.member.voiceChannel) return message.channel.send(':no_entry: || **__يجب ان تكون في روم صوتي__**');
-
-    dispatcher.end();
-
-}
-
 function playMusic(id, message) {
 
     voiceChannel = message.member.voiceChannel;
