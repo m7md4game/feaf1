@@ -7,9 +7,7 @@ client.on('ready', () => {
 
 const shorten = require('isgd');
 client.on('message', message => {
-        var prefix = "$";
-
- if (message.content.startsWith(prefix + 'short')) {
+ if (message.content.startsWith('$short')) {
     let args = message.content.split(" ").slice(1);
   if (!args[0]) return message.channel.send('**Usage**: '+ prefix +'short <رابط>')
   if (!args[1]) { 
@@ -338,6 +336,7 @@ https://discordapp.com/oauth2/authorize?&client_id=526465331997442048&scope=bot&
         ***__Administrative Orders__***
 **
 『$kick / كيك』
+『$vkick / لطرد شخص ما من الروم الصوتي المتواجد فيه』
 『$dcolors / لمسح جميع الالوان التي تم انشاؤها بسيرفرك』
 『$move / نقل جميع الاعضاء الى الروم الصوتي الي انت فيه』
 『$cc / كود الالوان』
