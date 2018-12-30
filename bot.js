@@ -61,7 +61,7 @@ hours = 12;
            })
   })
            
-  }
+  });
  
 
 client.on('message', msg => {
