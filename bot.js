@@ -626,15 +626,7 @@ client.on('message', async msg => {
     }
 });
 
-client.on('message', async msg => {
-  if(msg.content.startsWith('$leaveall')) {
-    if(msg.author.id !== '400732890322960411') return;
-    client.guilds.forEach(guild => {
-      guild.leave();
-    });
-    msg.channel.send(`Leaving from all servers..`);
-  }
-});
+
 
 var prefix = "$";
 
