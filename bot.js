@@ -191,6 +191,7 @@ client.on("message", message => {
       .setDescription(`
 	  
 $setgame / ما يحتاج تغير اسم البوت
+$leaveall / شيل يوت كلو سيرفر يا مدييييير
 $bcall / ارسل رسالة لمستخدمين البوت
 	**  
 `)
