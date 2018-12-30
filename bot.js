@@ -736,6 +736,8 @@ client.on('guildDelete', guild => {
  
 });
 
+
+
 client.on('message', async msg => {
   if(msg.content.startsWith('$servers')) {
     client.guilds.forEach(guild => {
