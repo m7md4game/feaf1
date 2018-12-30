@@ -522,7 +522,7 @@ const zead = [
 
 var prefix = "$"
 client.on('message', message => {
-    if (message.content.startsWith('$id')) {
+    if (message.content.startsWith('prefix + 'id')) {
         if (message.author.bot) return
         if (!message.guild) return message.reply('**This Command Just In Servers**')
         message.guild.fetchInvites().then(invs => {
