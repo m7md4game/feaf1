@@ -331,14 +331,17 @@ message.author.sendEmbed(embed)
 }); 
 
 client.on("message", message => {
- if (message.content === "!help-ad") {
+ if (message.content === "$help-ad") {
   const embed = new Discord.RichEmbed() 
       .setColor("#ffff00")
       .setThumbnail(message.author.avatarURL)
       .setDescription(`
 	  
+$setgame / حطو واتشينق يا مودييير
+$setavatar / غير صوره بوت يا موديييييير
+$setname / غير اسمو بوت يا موووودير
 $servers / شوف كلو بوت في موجود في سيرفر
-$setgame / ما يحتاج تغير اسم البوت
+$setgame / حطو بلاينق يا موديير
 $leaveall / شيل يوت كلو سيرفر يا مدييييير
 $bcall / ارسل رسالة لمستخدمين البوت
 	**  
