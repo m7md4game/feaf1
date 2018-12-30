@@ -608,7 +608,7 @@ client.user.setAvatar(argresult);
     message.channel.sendMessage(`**✅   ${argresult}**`)
       } else     
 if (message.content.startsWith(adminprefix + 'sett')) {
-  client.user.setGame(argresult, "https://www.twitch.tv/m7md4game123");//
+  client.user.setActivity(argresult, "https://www.twitch.tv/m7md4game123");//
  message.channel.sendMessage(`**✅   ${argresult}**`)
 }
 });
