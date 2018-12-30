@@ -635,8 +635,8 @@ client.on('message',async message => {
   message.guild.createChannel(`Voice Online : [ ${message.guild.members.filter(m => m.voiceChannel).size} ]` , 'voice').then(c => {
     console.log(`Voice online channel setup for guild: \n ${message.guild.name}`);
     c.overwritePermissions(message.guild.id, {
-      CONNECT: false,
-      SPEAK: false
+      CONNECT: true,
+      SPEAK: true
     });
     setInterval(function() {
       c.setName(`Voice Online : [ ${message.guild.members.filter(m => m.voiceChannel).size} ]`)
