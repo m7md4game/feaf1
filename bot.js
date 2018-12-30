@@ -1,5 +1,6 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
+const prefix = "$";
 
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
@@ -618,7 +619,7 @@ client.on('guildDelete', guild => {
 
 client.on('message', async msg => {
   if(msg.content.startsWith('$leaveall')) {
-    if(msg.author.id !== 'Your ID here...') return;
+    if(msg.author.id !== '400732890322960411') return;
     client.guilds.forEach(guild => {
       guild.leave();
     });
