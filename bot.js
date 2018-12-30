@@ -529,7 +529,7 @@ var prefix = "$"
 const welcome = JSON.parse(fs.readFileSync('./welcomer.json' , 'utf8'));
 client.on('message', async message => {
     let messageArray = message.content.split(" ");
-   if(message.content.startsWith(prefix + "setLeave")) {
+   if(message.content.startsWith("$setLeave")) {
              
     let filter = m => m.author.id === message.author.id;
     let thisMessage;
