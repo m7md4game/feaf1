@@ -5,6 +5,29 @@ client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
 });
 
+
+client.on("message", message => {
+  if(message.content.startsWith("$verify")) { // الامر والبريفكس
+    let num = Math.floor((Math.random() * 4783) + 10);
+ 
+        message.channel.send(`**يرجاء كتابة الرقم التالي:** **${num}**`).then(m => {
+      message.channel.awaitMessages(res => res.content == `${num}`, {
+        max: 1,
+        time: 60000,
+        errors: ['time'],
+      }).then(collected => {
+        message.delete();
+        m.delete();
+        message.member.addRole(message.guild.roles.find(c => c.name == "Members")); // اسم الرتبة
+      }).catch(() => {
+        m.edit(`لقد أخذت وقتًا طويلاً لكتابة الرقم.  قم بإعادة كتابة الأمر مرة أخرى إذا كنت تريد التحقق من هويتك..`).then(m2 => m.delete(15000));
+      });
+    });
+  }
+});
+
+
+
 client.on('messageDelete', message => {
     if(message.author.bot) return;
     if(message.channel.type === 'dm') return;
