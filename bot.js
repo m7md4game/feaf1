@@ -545,7 +545,7 @@ client.on('message', function(message) {
 
     const args = message.content.split(' ').slice(1).join(' ');
 
-    if (mess.startsWith(prefix + 'play')) {
+    if (mess.startsWith('$play')) {
 
         if (!message.member.voiceChannel) return message.channel.send(':no_entry: || **__يجب ان تكون في روم صوتي__**');
 
@@ -647,7 +647,7 @@ client.on('message', function(message) {
 
     }
 
-    else if (mess.startsWith(prefix + 'skip')) {
+    else if (mess.startsWith('$skip')) {
 
         if (!message.member.voiceChannel) return message.channel.send(':no_entry: || **__يجب ان تكون في روم صوتي__**');
 
@@ -679,7 +679,7 @@ client.on('message', function(message) {
 
     }
 
-    else if (mess.startsWith(prefix + 'pause')) {
+    else if (mess.startsWith('$pause')) {
 
         if (!message.member.voiceChannel) return message.channel.send(':no_entry: || **__يجب ان تكون في روم صوتي__**');
 
@@ -691,7 +691,7 @@ client.on('message', function(message) {
 
     }
 
-    else if (mess.startsWith(prefix + 'leave')) {
+    else if (mess.startsWith('$leave')) {
 
         if (!message.member.voiceChannel) return message.channel.send(':no_entry: || **__يجب ان تكون في روم صوتي__**');
 
@@ -703,7 +703,7 @@ client.on('message', function(message) {
 
     }
 
-    else if (mess.startsWith(prefix + 'stop')) {
+    else if (mess.startsWith('$stop')) {
 
         if (!message.member.voiceChannel) return message.channel.send(':no_entry: || **__يجب ان تكون في روم صوتي__**');
 
@@ -715,7 +715,7 @@ client.on('message', function(message) {
 
     }
 
-    else if (mess.startsWith(prefix + 'join')) {
+    else if (mess.startsWith('$join')) {
 
         if (!message.member.voiceChannel) return message.channel.send(':no_entry: || **__يجب ان تكون في روم صوتي__**');
 
@@ -723,7 +723,7 @@ client.on('message', function(message) {
 
     }
 
-    else if (mess.startsWith(prefix + 'play')) {
+    else if (mess.startsWith('$play')) {
 
         if (!message.member.voiceChannel) return message.channel.send(':no_entry: || **__يجب ان تكون في روم صوتي__**');
 
