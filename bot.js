@@ -520,93 +520,36 @@ const zead = [
 
 //أوامر عامة//
 
-
-
-Create Paste
-Followup Paste
-QR
-var prefix = "$"
-const welcome = JSON.parse(fs.readFileSync('./welcomer.json' , 'utf8'));
-client.on('message', async message => {
-    let messageArray = message.content.split(" ");
-   if(message.content.startsWith("$setLeave")) {
-             
-    let filter = m => m.author.id === message.author.id;
-    let thisMessage;
-    let thisFalse;
-
-    if(!message.member.hasPermission("MANAGE_GUILD")) return message.channel.send('You don\'t have permission').then(msg => {
-       msg.delete(4500);
-       message.delete(4500);
-    });
-    
-    message.channel.send(':pencil: **| غادر السيرفر... :pencil2: **').then(msg => {
-
-        message.channel.awaitMessages(filter, {
-          max: 1,
-          time: 90000,
-          errors: ['time']
-        })
-        .then(collected => {
-            collected.first().delete();
-            thisMessage = collected.first().content;
-            let boi;
-            msg.edit(':scroll: **| wlc... :pencil2: **').then(msg => {
-      
-                message.channel.awaitMessages(filter, {
-                  max: 1,
-                  time: 90000,
-                  errors: ['time']
+client.on('message', message => {
+    if (message.content.startsWith('$id')) {
+        if (message.author.bot) return
+        if (!message.guild) return message.reply('**This Command Just In Servers**')
+        message.guild.fetchInvites().then(invs => {
+            let personalInvites = invs.filter(i => i.inviter.id === message.author.id)
+            let inviteCount = personalInvites.reduce((p, v) => v.uses + p, 0)
+          var roles = message.member.roles.map(roles => `**__${roles.name}__ |**`).join(` `)
+        let id = new Discord.RichEmbed()
+        .setColor('RANDOM')
+        .setTitle(':clipboard: | User identity info')
+        .setAuthor(message.author.username,message.author.avatarURL)
+        .addField('• Name :', message.author.username,true)
+        .addField('• Tag :', message.author.discriminator,true)
+        .addField('• ID :', message.author.id,true)
+        .addField('• JoinedAt :', moment(message.joinedAt).format('D/M/YYYY h:mm a '),true)
+        .addField('• CreatedAt :', moment(message.joinedAt).format('D/M/YYYY h:mm a '),true)
+        .addField('• Total invites :', inviteCount,true)
+        .addField('• Roles :', roles)
+        .setTimestamp()
+        message.channel.sendEmbed(id).then(c => {
+            c.react('📋')
                 })
-                .then(collected => {
-                    collected.first().delete();
-                    boi = collected.first().content;
-                    msg.edit('✅ **| تم الاعداد بنجاح...  **').then(msg => {
-        
-                      message.channel.awaitMessages(filter, {
-                        max: 1,
-                        time: 90000,
-                        errors: ['time']
-                      })
-                      let embed = new Discord.RichEmbed()
-                      .setTitle('**Done The Leave Msg Code Has Been Setup**')
-                      .addField('Message:', `${thisMessage}`)
-                      .addField('Channel:', `${boi}`)
-                      .setThumbnail(message.author.avatarURL)
-                      .setFooter(`${client.user.username}`)
-                     message.channel.sendEmbed(embed)
-    welcome[message.guild.id] = {
-leavechannel: boi,
-leavemsg: thisMessage,
-onoff: 'On',
-leave: 'On'
-    }
-    fs.writeFile("./welcomer.json", JSON.stringify(welcome), (err) => {
-    if (err) console.error(err)
-  })
-   } 
-            )
-        })
-    })
-})
-    })
-}})
-
-
-      client.on("guildMemberRemove", member => {
-            if(!welcome[member.guild.id]) welcome[member.guild.id] = {
-          onoff: 'On',
-          leave: 'Off'
+            })
         }
+    
         
-        if(welcome[member.guild.id].onoff === 'Off') return;
-                if(welcome[member.guild.id].leave === 'Off') return;
-    let welcomer = member.guild.channels.find('name', `${welcome[member.guild.id].leavechannel}`)
-    if(!welcomer) return;
-     welcomer.send(`${member} ${welcome[member.guild.id].leavemsg}`);
-      }) 
+});
 
- 
+
  client.on('message', message => {
     var prefix = "$"
     if (message.content === prefix + "date") {
