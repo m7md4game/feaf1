@@ -5,29 +5,6 @@ client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
 });
 
-
-var analyrics = require("analyrics"); //npm i analyrics
-var hastebin = require('hastebin-gen'); //npm i hastebin-gen
-analyrics.setToken("NTI2NDY1MzMxOTk3NDQyMDQ4.DwPcFQ.vsC_Cj4Aky1ZBZ92FF1R8WeODpg");
-
-client.on("message", async message =>{
-if(message.content.startsWith("$lyrics")){
-let args = message.content.split(" ").slice(1).join(" ");
-if(!args[0]) return message.reply("please enter song name to get the lyrics");
-analyrics.getSong(args, function(song) {
-hastebin(song.title, "txt").then(r => {
-message.channel.send(`${song.title} **Lyrics in hastebin** : 
-[ ${r} ]`)
-}).catch(console.error);
-let embed = new Discord.RichEmbed()
-.setAuthor(message.author.tag, message.author.avatarURL)
-.setDescription(`${song.lyrics}`)
-.setFooter(`${song.title}` + " Song Lyrics");
-message.channel.send(embed)
-});
-    }
-})
-
 var prefix = "$";
 client.on("message", message => {
   let men = message.mentions.users.first();
