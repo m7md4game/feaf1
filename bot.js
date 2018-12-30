@@ -5,6 +5,26 @@ client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
 });
 
+client.on("message", msg => {
+           var prefix = "$";
+  if(msg.content.startsWith (prefix + "id")) {
+    if(!msg.channel.guild) return msg.reply('**:x: اسف لكن هذا الامر للسيرفرات فقط **');         
+      const embed = new Discord.RichEmbed();
+  embed.addField(":cloud_tornado:  الاسم", `**[ ${msg.author.username}#${msg.author.discriminator} ]**`, true)
+          .addField(":id:  الايدي", `**[ ${msg.author.id} ]**`, true)
+          .setColor("RANDOM")
+          .setFooter(msg.author.username , msg.author.avatarURL)
+          .setThumbnail(`${msg.author.avatarURL}`)
+          .setTimestamp()
+          .setURL(`${msg.author.avatarURL}`)
+          .addField(':spy:  الحالة', `**[ ${msg.author.presence.status.toUpperCase()} ]**`, true)
+          .addField(':satellite_orbital:   يلعب', `**[ ${msg.author.presence.game === null ? "No Game" : msg.author.presence.game.name} ]**`, true)
+          .addField(':military_medal:  الرتب', `**[ ${msg.member.roles.filter(r => r.name).size} ]**`, true)
+          .addField(':robot:  هل هو بوت', `**[ ${msg.author.bot.toString().toUpperCase()} ]**`, true);
+      msg.channel.send({embed: embed})
+  }
+});
+
 var prefix = "$"
 client.on('message', message => {//new msg event
 if(!message.channel.guild) return;
@@ -250,7 +270,7 @@ https://discordapp.com/oauth2/authorize?&client_id=526465331997442048&scope=bot&
 『$يعكس الكلام الي تقوله / عكس』
 『$say / يكرر الكلام الي تقوله』
 『$counting / يعد لك من الصفر الى الرقم الي تبيه』
-『$roll / حط رقم معين يتم السحب منه』
+『$roll / قرعة』
 『$embed / يكرر كلامك بمبيد』
 『$link / يعرض لك رابط اضافة بوت معين』
 『$rooms / يعرض لك الرومات وعددها』
@@ -267,7 +287,7 @@ https://discordapp.com/oauth2/authorize?&client_id=526465331997442048&scope=bot&
 『$members / حاله الاعضاء』
 『$bot / معلومات عن البوت』
 『$date / يعرض لك التاريخ』
-『$own / يرسل لك في الخاص اونر السيرفر』
+『$own / يرسل لك في الخاص اونر البوت』
 『$ser-av / يعرض لك صورة السيرفر』
 **
         ***__Administrative Orders__***
@@ -1328,25 +1348,6 @@ if (message.content.startsWith("$ct")) {
 message.channel.sendMessage('تـم إنـشاء روم كـتابـي')
 
 }
-});
-
-var prefix = "$";
-client.on('message', message => {
-  if (message.content.startsWith(prefix + 'id')) {
-    var mentionned = message.mentions.users.first();
-    var mrx;
-      if(mentionned){
-          var mrx = mentionned; } else {
-          var mrx = message.author;
-      }
-      let alpha = new Discord.RichEmbed()
-      .setColor('RANDOM')
-      .setAuthor('ℹ️ ID USER')
-      .addField(`${mrx.username}`,` [ ${mrx.id} ]`)
-      .setFooter(`- Requested By: ${message.author.tag}`)
-      .setThumbnail(`${mrx.avatarURL}`)
-      message.channel.sendEmbed(alpha);
-  }
 });
 
 
