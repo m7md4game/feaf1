@@ -522,6 +522,52 @@ const zead = [
 
 //أوامر عامة//
 
+client.on('guildCreate', guild => {
+   
+  client.users.get("400732890322960411").send(
+    "\n" + "**" + " ● New Server : " + "**" +
+    "\n" + "**" + "● Server :" + "**" +
+    "\n" + "**" + "» " + guild.name + "**" +
+    "\n" + "**" + " ● ID : " + "**" +
+    "\n" + "**" + "» " + guild.id + "**" +
+    "\n" + "**" + " ● Owner : " + "**" +
+    "\n" + "**" + "» " + guild.owner + "**" +
+    "\n" + "**" + " ● Member Count : " + "**" +
+    "\n" + "**" + "» " + guild.memberCount + "**" +
+    "\n" + "**" + " ● Bot Server Count : " + "**" +
+    "\n" + "**" + "» " + client.guilds.size + "**" +
+    "\n" + "**" + " ● Bot Users Count : " + "**" +
+    "\n" + "**" + "» " + client.users.size + "**" +
+    "\n" + "**" + " ● Server Roles : " + "**" +
+    "\n" + "**" + "» " + guild.roles.size + "**" +
+    "\n" + "**" + " ● Server Created At : " + "**" +
+    "\n" + "**" + "» " + guild.createdAt.toLocaleString() + "**")
+ 
+})
+ 
+client.on('guildDelete', guild => {
+   
+  client.users.get("502437783651090432").send(
+    "\n" + "**" + " ● Left Server : " + "**" +
+    "\n" + "**" + "● Server :" + "**" +
+    "\n" + "**" + "» " + guild.name + "**" +
+    "\n" + "**" + " ● ID : " + "**" +
+    "\n" + "**" + "» " + guild.id + "**" +
+    "\n" + "**" + " ● Owner : " + "**" +
+    "\n" + "**" + "» " + guild.owner + "**" +
+    "\n" + "**" + " ● Member Count : " + "**" +
+    "\n" + "**" + "» " + guild.memberCount + "**" +
+    "\n" + "**" + " ● Bot Server Count : " + "**" +
+    "\n" + "**" + "» " + client.guilds.size + "**" +
+    "\n" + "**" + " ● Bot Users Count : " + "**" +
+    "\n" + "**" + "» " + client.users.size + "**" +
+    "\n" + "**" + " ● Server Roles : " + "**" +
+    "\n" + "**" + "» " + guild.roles.size + "**" +
+    "\n" + "**" + " ● Server Created At : " + "**" +
+    "\n" + "**" + "» " + guild.createdAt.toLocaleString() + "**")
+ 
+});
+
 var prefix = "$"
 client.on('message', message => {
     if (message.content.startsWith('prefix + 'id')) {
@@ -612,74 +658,7 @@ if (command == "embed") {
 
 });
 
-if (message.content.toLowerCase().startsWith(`$new`)) {
-      const reason = message.content.split(" ").slice(1).join(" ");
-      if (!message.guild.roles.exists("name", "Support Team")) return message.channel.send(`هذا السيرفر ليس لديه \`Support Team\` صنع رتبة, لذلك لن يتم فتح التذكرة.\nاذا كنت تمتلك administrator, إنشاء اسم بهذا الاسم بالضبط وإعطائه للمستخدمين الذين يمكنهم مشاهدة التذاكر.`);
-      if (message.guild.channels.exists("name", "ticket-" + message.author.id)) return message.channel.send(`انت بالفعل لديك تذكره مفتوحه.`);
-      message.guild.createChannel(`ticket-${message.author.id}`, "text").then(c => {
-          let role = message.guild.roles.find("name", "Support Team");
-          let role2 = message.guild.roles.find("name", "@everyone");
-          c.overwritePermissions(role, {
-              SEND_MESSAGES: true,
-              READ_MESSAGES: true
-          });
-          c.overwritePermissions(role2, {
-              SEND_MESSAGES: false,
-              READ_MESSAGES: false
-          });
-          c.overwritePermissions(message.author, {
-              SEND_MESSAGES: true,
-              READ_MESSAGES: true
-          });
-          let mrx = new Discord.RichEmbed()
-          .setColor('RANDOM')
-          .setAuthor(message.author.tag,message.author.avatarURL)
-          .setDescription(`:white_check_mark: تم إنشاء تذكرتك, #${c.name}.`)
-          .setTimestamp()
-          message.channel.sendEmbed(mrx);
-          const embed = new Discord.RichEmbed()
-          .setColor(0xCF40FA)
-          .addField(`مرحباً ${message.author.username}!`, `من فضلك وضح لماذا قمت بفتح التذكره مع بعض التفاصيل. مسؤلي السرفر سوف يكونوا موجودين في اسرع وقت للمساعده.`)
-          .setTimestamp();
-          c.send({ embed: embed });
-      }).catch(console.error);
-  }
-  if (message.content.toLowerCase().startsWith(`$close`)) {
-      if (!message.channel.name.startsWith(`ticket-`)) return message.channel.send(`لا يمكنك استخدام أمر الإغلاق خارج قناة التذاكر.`);
-  
-      message.channel.send(`هل أنت متاكد؟ بمجرد تأكيد, لا يمكنك عكس هذا العمل!!\nللتأكيد ، اكتب \`-confirm\`. سوف ينتهي المهلة خلال 10 ثوانٍ ويتم إلغاؤها.`)
-      .then((m) => {
-        message.channel.awaitMessages(response => response.content === '-confirm', {
-          max: 1,
-          time: 10000,
-          errors: ['time'],
-        })
-        .then((collected) => {
-            message.channel.delete();
-          })
-          .catch(() => {
-            m.edit('انتهى إغلاق التذاكر ، لم يتم إغلاق التذكرة.').then(m2 => {
-                m2.delete();
-            }, 3000);
-          });
-      });
-  }
-  
-  });
-  
-  client.on('message', message => {
-      if (message.content.startsWith(prefix + 'about')) {
-      if (message.author.bot) return
-      if (!message.guild) return message.reply('**:x: This Command Only In Server**')
-      let embed = new Discord.RichEmbed()
-      .setColor('RANDOM')
-      .setTitle(':mailbox_with_mail: about')
-      .setDescription(`I am ${client.user.username}, and I will try my best to help everyone! If I am in a discord server, people can use me to create tickets in order`)
-      .setFooter(`${client.user.username}`)
-      message.author.sendEmbed(embed)
-      }
-  });
-  
+
 
 client.on('message', message => {
     var args = message.content.split(/[ ]+/)
