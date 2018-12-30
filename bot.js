@@ -146,6 +146,7 @@ https://discordapp.com/oauth2/authorize?&client_id=526465331997442048&scope=bot&
         ***__Administrative Orders__***
 **
 『$kick / كيك』
+『$dcolors / لمسح جميع الالوان التي تم انشاؤها بسيرفرك』
 『$move / نقل جميع الاعضاء الى الروم الصوتي الي انت فيه』
 『$cc / كود الالوان』
 『$ban / بان』
