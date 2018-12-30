@@ -11,7 +11,7 @@ var hastebin = require('hastebin-gen'); //npm i hastebin-gen
 analyrics.setToken("NTI2NDY1MzMxOTk3NDQyMDQ4.DwPcFQ.vsC_Cj4Aky1ZBZ92FF1R8WeODpg");
 
 client.on("message", async message =>{
-if(message.content.startsWith("=lyrics")){
+if(message.content.startsWith("$lyrics")){
 let args = message.content.split(" ").slice(1).join(" ");
 if(!args[0]) return message.reply("please enter song name to get the lyrics");
 analyrics.getSong(args, function(song) {
