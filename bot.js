@@ -5,6 +5,16 @@ client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
 });
 
+client.on('message', message => {
+
+  if (message.content.startsWith("$rep")) {
+  if (!message.channel.guild) return;
+  let args = message.content.split(" ").slice(1).join(' ');
+message.channel.send(
+      "\n" + "#rep <@!" + args + ">")
+  }
+});
+
 client.on("message", msg => {
            var prefix = "$";
   if(msg.content.startsWith (prefix + "id")) {
