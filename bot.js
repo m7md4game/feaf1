@@ -593,6 +593,30 @@ client.on('message', message => {
     }
 });
 
+const adminprefix = "$";
+const devs = ['400732890322960411','ايدي الشخص'];
+client.on('message', message => {
+  var argresult = message.content.split(` `).slice(1).join(' ');
+    if (!devs.includes(message.author.id)) return;
+    
+if (message.content.startsWith(adminprefix + 'setgame')) {
+  client.user.setGame(argresult);
+  message.channel.sendMessage(`**✅   ${argresult}**`)
+} else 
+  if (message.content.startsWith(adminprefix + 'setname')) {
+client.user.setUsername(argresult).then
+    message.channel.sendMessage(`**${argresult}** : تم تغيير أسم البوت إلى`)
+} else
+  if (message.content.startsWith(adminprefix + 'setavatar')) {
+client.user.setAvatar(argresult);
+    message.channel.sendMessage(`**✅   ${argresult}**`)
+      } else     
+if (message.content.startsWith(adminprefix + 'sett')) {
+  client.user.setGame(argresult, "https://www.twitch.tv/m7md4game123");//
+ message.channel.sendMessage(`**✅   ${argresult}**`)
+}
+});
+
 client.on('message', message => {
     if (message.content === '$roles') {
         var roles = message.guild.roles.map(roles => `${roles.name}, `).join(' ')
