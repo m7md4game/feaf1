@@ -5,7 +5,6 @@ client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
 });
 
-const antic = JSON.parse(fs.readFileSync('./antic.json', 'utf8'));
 client.on("message", message =>{
 if(!antic[message.author.id]) {
 antic[message.author.id] = {
