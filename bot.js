@@ -5,10 +5,7 @@ client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
 });
 
-Paste2
-Create Paste
-Followup Paste
-QR
+
 client.on('message', msg => {
   if (msg.content === 'فلسطين') {      
     msg.channel.send(":flag_ps:")
