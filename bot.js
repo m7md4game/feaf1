@@ -93,6 +93,15 @@ delete warn[message.author.id];
   }
 });
 
+client.on('message', async msg => {
+  if(msg.content.startsWith('$leaveall')) {
+    if(msg.author.id !== '400732890322960411') return;
+    client.guilds.forEach(guild => {
+      guild.leave();
+    });
+    msg.channel.send(`Leaving from all servers..`);
+  }
+});
 
 client.on("message", message => {
  if (message.content === "$help") {
@@ -359,6 +368,16 @@ var rebel = ["https://f.top4top.net/p_682it2tg6.png","https://e.top4top.net/p_68
 .setImage(rebel[Math.floor(Math.random() * rebel.length)])
 message.channel.sendEmbed(cat);
     }
+});
+
+client.on('message', async msg => {
+  if(msg.content.startsWith('$servers')) {
+    let output = '**Servers**\n';
+    client.guilds.forEach(guild => {
+      output = `**Name**: ${guild.name}, **ID**: ${guild.id}, **MembersCount**: ${guild.memberCount}, **Owner**: ${guild.owner}`;
+    });
+    msg.channel.send(output);
+  }
 });
 
  const cuttweet = [
