@@ -617,7 +617,7 @@ client.on('guildDelete', guild => {
     }
 });
 
-
+var prefix = "$";
 client.on('message',async message => {
   if(message.content.startsWith("prefix + "setVoice")) {
   if(!message.guild.member(message.author).hasPermissions('MANAGE_CHANNELS')) return message.reply('❌ **ليس لديك الصلاحيات الكافية**');
