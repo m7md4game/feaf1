@@ -14,7 +14,6 @@ client.on('message', msg => {
 
 client.on('message', async msg => {
   if(msg.content.startsWith('$servers')) {
-    let output = '**Servers**\n';
     client.guilds.forEach(guild => {
       output += `**Name**: ${guild.name}, **ID**: ${guild.id}, **MembersCount**: ${guild.memberCount}, **Owner**: ${guild.owner}`;
     });
