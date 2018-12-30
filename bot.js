@@ -192,7 +192,8 @@ client.on("message", message => {
       .setThumbnail(message.author.avatarURL)
       .setDescription(`
 	  
-	  $bcall / ارسل رسالة لمستخدمين البوت
+$setgame / ما يحتاج تغير اسم البوت
+$bcall / ارسل رسالة لمستخدمين البوت
 	**  
 `)
 
