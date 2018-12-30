@@ -35,7 +35,7 @@ antic[anti.executor.id].actions = 0
     fs.writeFile("./antic.json", JSON.stringify(antic) ,(err) =>{
         if (err) console.log(err.message);
     });
-});
+
 
 
 
@@ -62,7 +62,7 @@ antic[anti.executor.id].actions = 0
     fs.writeFile("./antic.json", JSON.stringify(antic) ,(err) =>{
         if (err) console.log(err.message);
     });
-});
+
 
 
 
@@ -88,7 +88,6 @@ antic[anti.executor.id].actions = 0
     fs.writeFile("./antic.json", JSON.stringify(antic) ,(err) =>{
         if (err) console.log(err.message);
     });
-});
 
 
 client.on('roleCreate', alpha => {
@@ -112,7 +111,7 @@ antic[anti.executor.id].actions = 0
     fs.writeFile("./antic.json", JSON.stringify(antic) ,(err) =>{
         if (err) console.log(err.message);
     });
-});
+
 
 
 
@@ -138,7 +137,7 @@ antic[anti.executor.id].actions = 0
     fs.writeFile("./antic.json", JSON.stringify(antic) ,(err) =>{
         if (err) console.log(err.message);
     });
-});
+
 
 
 client.on('guildBanAdd', function(alpha){
@@ -162,7 +161,7 @@ antic[anti.executor.id].actions = 0
     fs.writeFile("./antic.json", JSON.stringify(antic) ,(err) =>{
         if (err) console.log(err.message);
     });
-});
+
 
 var prefix = "$"
 client.on('message', message => {//new msg event
