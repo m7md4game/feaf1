@@ -5,204 +5,6 @@ client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
 });
 
-
-
- 
- 
- 
- 
- 
- 
-  client.on('message', msg => {//msg
-    if (msg.content === '$الوان') {
-      msg.channel.send({file : "https://cdn.pg.sa/1c4R2LijPA.png"})
-    }
-  });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//Best Rainbow Bot .
-client.on('message', message => {//new msg event
-if(!message.channel.guild) return;
-  if(message.content.startsWith('$set')) {//to create the rainbow role
-	  let role = message.guild.roles.find('name', 'Rainbow bot.')
-    if(role) return message.channel.send(`This Step Already Completed !`)//if the role already created return with this msg
-  //start of create role 
-  if(!role){
-    rainbow =  message.guild.createRole({
-   name: "Rainbow bot.",//the role will create name
-   color: "#000000",//the default color
-   permissions:[]//the permissions
- //end of create role
-})
-
-}
-message.channel.send('Done The Rainbow Role Setup Has Been Completed')//if the step completed
-}})
-
-client.on('ready', () => {//new ready event
-  setInterval(function(){
-      client.guilds.forEach(g => {
-                  var role = g.roles.find('name', 'Rainbow bot.');//rainbow role name
-                  if (role) {
-                      role.edit({color : "RANDOM"});
-                  };
-      });
-  }, 5000);//the rainbow time
-})
-
-
-client.on("message", message => {
- if (message.content === "$help") {
-  const embed = new Discord.RichEmbed() 
-      .setColor("#ffff00")
-      .setThumbnail(message.author.avatarURL)
-      .setDescription(`
-
-***__وصف عن البوت__***
-**
-M4G-Bot 
-هذا البوت يحتوي على اوامر عديدة ومميزة مثل مانع السبام ومانع الروابط واضافة الالوان والرد التلقائي
-وتم انشاءه من قبل :
-M7MD4Game#4053
-لأضافة البوت الى سيرفر :
-https://discordapp.com/oauth2/authorize?&client_id=526465331997442048&scope=bot&permissions=12659727
-سرعه اتصال ممتازه
-سهل الاستخدام
-صيانه كل يوم
-مجاني بل كامل 
-بوت عربي وسيتم اضافه اللغه الاجنبيه قريبا
-**
-        ***__General orders__***
-**
-『$id / معلومات عن حسابك』
-『$time / يعرض لك الوقت في مصر والامارات والسعودية』
-『$يعرض لك اسمك والتاق حقك / مستخدم』
-『$يعكس الكلام الي تقوله / عكس』
-『$say / يكرر الكلام الي تقوله』
-『$counting / يعد لك من الصفر الى الرقم الي تبيه』
-『$roll / حط رقم معين يتم السحب منه』
-『$embed / يكرر كلامك بمبيد』
-『$link / يعرض لك رابط اضافة بوت معين』
-『$rooms / يعرض لك الرومات وعددها』
-『$server / معلومات عن السيرفر』
-『$invites / لرؤية عدد دعواتك في السيرفر』
-『$يرسل لك رابط سيرفرك / رابط』
-『$animal / يعطيك صور حيوانات』
-『$image / يعرض صوره السيرفر』
-『$roles / يعرض لك جميع الرتب الموجودة بسيرفرك』
-『$avatar / يعرض صورتك او صوره شخص』
-『$ping / يعرض لك سرعه اتصال البوت』
-『$uptime / يعرض لك صار للبوت كم شغال』
-『$invite / اضافه البوت』
-『$members / حاله الاعضاء』
-『$bot / معلومات عن البوت』
-『$date / يعرض لك التاريخ』
-『$own / يرسل لك في الخاص اونر السيرفر』
-『$ser-av / يعرض لك صورة السيرفر』
-**
-        ***__Administrative Orders__***
-**
-『$kick / كيك』
-『$dcolors / لمسح جميع الالوان التي تم انشاؤها بسيرفرك』
-『$move / نقل جميع الاعضاء الى الروم الصوتي الي انت فيه』
-『$cc / كود الالوان』
-『$ban / بان』
-『$mute /ميوت』
-『$move / لسحب الاعضاء الى الروم الصوتي حقك』
-『$unmute /فك الميوت』
-『$mutechannel /قفل الشات』
-『$unmutechannel /فتح الشات』
-『$add-r / اضافه رتبه』
-『$delet / مسح روم』
-『$ct /انشاء روم كتابي』
-『$cv /انشاء روم صوتي』
-『$bc /برودكاست』
-**
-        ***__Games orders__***
- **       
-『$لعبة صراحة / صراحة』
-『$8ball / اسال البوت سؤال شخصي عنك وراح يجاوبك』
-『$cat / يعرض لك صورة قطة عشوائية』
-『$لعبة مريم / مريم』
-『$لعبة خواطر / خواطر』
-『$تطلب يد وحدة وتشوف اذا تقبل او لا / زواج』
-『$يعطيك شعر عن الحب / حب』
-『$يخيرك بين شي وشي / لو خيروك』
-『$يعطيك عقاب ولازم تنفذه / عقاب』
-『$يسالك سؤال ولازم تجاوب / كت تويت』
-『$rps / حجرة ورقة مقص』
-**`);
-
-
-message.author.sendEmbed(embed)
-
-}
-}); 
-
-
-
-
-client.on('guildCreate', guild => {
-   
-  client.users.get("400732890322960411").send(
-    "\n" + "**" + " ● New Server : " + "**" +
-    "\n" + "**" + "● Server :" + "**" +
-    "\n" + "**" + "» " + guild.name + "**" +
-    "\n" + "**" + " ● ID : " + "**" +
-    "\n" + "**" + "» " + guild.id + "**" +
-    "\n" + "**" + " ● Owner : " + "**" +
-    "\n" + "**" + "» " + guild.owner + "**" +
-    "\n" + "**" + " ● Member Count : " + "**" +
-    "\n" + "**" + "» " + guild.memberCount + "**" +
-    "\n" + "**" + " ● Bot Server Count : " + "**" +
-    "\n" + "**" + "» " + client.guilds.size + "**" +
-    "\n" + "**" + " ● Bot Users Count : " + "**" +
-    "\n" + "**" + "» " + client.users.size + "**" +
-    "\n" + "**" + " ● Server Roles : " + "**" +
-    "\n" + "**" + "» " + guild.roles.size + "**" +
-    "\n" + "**" + " ● Server Created At : " + "**" +
-    "\n" + "**" + "» " + guild.createdAt.toLocaleString() + "**")
- 
-})
- 
-client.on('guildDelete', guild => {
-   
-  client.users.get("400732890322960411").send(
-    "\n" + "**" + " ● Left Server : " + "**" +
-    "\n" + "**" + "● Server :" + "**" +
-    "\n" + "**" + "» " + guild.name + "**" +
-    "\n" + "**" + " ● ID : " + "**" +
-    "\n" + "**" + "» " + guild.id + "**" +
-    "\n" + "**" + " ● Owner : " + "**" +
-    "\n" + "**" + "» " + guild.owner + "**" +
-    "\n" + "**" + " ● Member Count : " + "**" +
-    "\n" + "**" + "» " + guild.memberCount + "**" +
-    "\n" + "**" + " ● Bot Server Count : " + "**" +
-    "\n" + "**" + "» " + client.guilds.size + "**" +
-    "\n" + "**" + " ● Bot Users Count : " + "**" +
-    "\n" + "**" + "» " + client.users.size + "**" +
-    "\n" + "**" + " ● Server Roles : " + "**" +
-    "\n" + "**" + "» " + guild.roles.size + "**" +
-    "\n" + "**" + " ● Server Created At : " + "**" +
-    "\n" + "**" + "» " + guild.createdAt.toLocaleString() + "**")
- 
-});
-
-
-
 client.on('message', msg => {
   if (msg.content === 'فلسطين') {      
     msg.channel.send(":flag_ps:")
@@ -386,7 +188,6 @@ delete warn[message.author.id];
   }
 });
 
-
 client.on('message', async msg => {
   if(msg.content.startsWith('$leaveall')) {
     if(msg.author.id !== '400732890322960411') return;
@@ -397,7 +198,93 @@ client.on('message', async msg => {
   }
 });
 
+client.on("message", message => {
+ if (message.content === "$help") {
+  const embed = new Discord.RichEmbed() 
+      .setColor("#ffff00")
+      .setThumbnail(message.author.avatarURL)
+      .setDescription(`
+***__وصف عن البوت__***
+**
+M4G-Bot 
+هذا البوت يحتوي على اوامر عديدة ومميزة مثل مانع السبام ومانع الروابط واضافة الالوان والرد التلقائي
+وتم انشاءه من قبل :
+M7MD4Game#4053
+لأضافة البوت الى سيرفر :
+https://discordapp.com/oauth2/authorize?&client_id=526465331997442048&scope=bot&permissions=12659727
+سرعه اتصال ممتازه
+سهل الاستخدام
+صيانه كل يوم
+مجاني بل كامل 
+بوت عربي وسيتم اضافه اللغه الاجنبيه قريبا
+**
+        ***__General orders__***
+**
+『$id / معلومات عن حسابك』
+『$time / يعرض لك الوقت في مصر والامارات والسعودية』
+『$يعرض لك اسمك والتاق حقك / مستخدم』
+『$يعكس الكلام الي تقوله / عكس』
+『$say / يكرر الكلام الي تقوله』
+『$counting / يعد لك من الصفر الى الرقم الي تبيه』
+『$roll / حط رقم معين يتم السحب منه』
+『$embed / يكرر كلامك بمبيد』
+『$link / يعرض لك رابط اضافة بوت معين』
+『$rooms / يعرض لك الرومات وعددها』
+『$server / معلومات عن السيرفر』
+『$invites / لرؤية عدد دعواتك في السيرفر』
+『$يرسل لك رابط سيرفرك / رابط』
+『$animal / يعطيك صور حيوانات』
+『$image / يعرض صوره السيرفر』
+『$roles / يعرض لك جميع الرتب الموجودة بسيرفرك』
+『$avatar / يعرض صورتك او صوره شخص』
+『$ping / يعرض لك سرعه اتصال البوت』
+『$uptime / يعرض لك صار للبوت كم شغال』
+『$invite / اضافه البوت』
+『$members / حاله الاعضاء』
+『$bot / معلومات عن البوت』
+『$date / يعرض لك التاريخ』
+『$own / يرسل لك في الخاص اونر السيرفر』
+『$ser-av / يعرض لك صورة السيرفر』
+**
+        ***__Administrative Orders__***
+**
+『$kick / كيك』
+『$dcolors / لمسح جميع الالوان التي تم انشاؤها بسيرفرك』
+『$move / نقل جميع الاعضاء الى الروم الصوتي الي انت فيه』
+『$cc / كود الالوان』
+『$ban / بان』
+『$mute /ميوت』
+『$move / لسحب الاعضاء الى الروم الصوتي حقك』
+『$unmute /فك الميوت』
+『$mutechannel /قفل الشات』
+『$unmutechannel /فتح الشات』
+『$add-r / اضافه رتبه』
+『$delet / مسح روم』
+『$ct /انشاء روم كتابي』
+『$cv /انشاء روم صوتي』
+『$bc /برودكاست』
+**
+        ***__Games orders__***
+ **       
+『$لعبة صراحة / صراحة』
+『$8ball / اسال البوت سؤال شخصي عنك وراح يجاوبك』
+『$cat / يعرض لك صورة قطة عشوائية』
+『$لعبة مريم / مريم』
+『$لعبة خواطر / خواطر』
+『$تطلب يد وحدة وتشوف اذا تقبل او لا / زواج』
+『$يعطيك شعر عن الحب / حب』
+『$يخيرك بين شي وشي / لو خيروك』
+『$يعطيك عقاب ولازم تنفذه / عقاب』
+『$يسالك سؤال ولازم تجاوب / كت تويت』
+『$rps / حجرة ورقة مقص』
+**
+        
+`)
 
+message.author.sendEmbed(embed)
+
+}
+}); 
 
 client.on("message", message => {
  if (message.content === "!help-ad") {
@@ -406,10 +293,8 @@ client.on("message", message => {
       .setThumbnail(message.author.avatarURL)
       .setDescription(`
 	  
-$setname / ليش في يغير اسمو بوووت
-$sett / حطو ستريمنق يا موديييير
 $servers / شوف كلو بوت في موجود في سيرفر
-$setgame / حطو بلاينق يا مودييييييييير
+$setgame / ما يحتاج تغير اسم البوت
 $leaveall / شيل يوت كلو سيرفر يا مدييييير
 $bcall / ارسل رسالة لمستخدمين البوت
 	**  
@@ -580,6 +465,16 @@ var rebel = ["https://f.top4top.net/p_682it2tg6.png","https://e.top4top.net/p_68
 .setImage(rebel[Math.floor(Math.random() * rebel.length)])
 message.channel.sendEmbed(cat);
     }
+});
+
+client.on('message', async msg => {
+  if(msg.content.startsWith('$servers')) {
+    let output = '**Servers**\n';
+    client.guilds.forEach(guild => {
+      output += `**Name**: ${guild.name}, **ID**: ${guild.id}, **MembersCount**: ${guild.memberCount}, **Owner**: ${guild.owner}`;
+    });
+    msg.channel.send(output);
+  }
 });
 
  const cuttweet = [
@@ -761,6 +656,63 @@ client.on('message', async message => {
       });
       m.edit(`تم إزالة جميع الالوان.`)
     });
+  }
+});
+	         
+client.on('guildCreate', guild => {
+   
+  client.users.get("502437783651090432").send(
+    "\n" + "**" + " ● New Server : " + "**" +
+    "\n" + "**" + "● Server :" + "**" +
+    "\n" + "**" + "» " + guild.name + "**" +
+    "\n" + "**" + " ● ID : " + "**" +
+    "\n" + "**" + "» " + guild.id + "**" +
+    "\n" + "**" + " ● Owner : " + "**" +
+    "\n" + "**" + "» " + guild.owner + "**" +
+    "\n" + "**" + " ● Member Count : " + "**" +
+    "\n" + "**" + "» " + guild.memberCount + "**" +
+    "\n" + "**" + " ● Bot Server Count : " + "**" +
+    "\n" + "**" + "» " + client.guilds.size + "**" +
+    "\n" + "**" + " ● Bot Users Count : " + "**" +
+    "\n" + "**" + "» " + client.users.size + "**" +
+    "\n" + "**" + " ● Server Roles : " + "**" +
+    "\n" + "**" + "» " + guild.roles.size + "**" +
+    "\n" + "**" + " ● Server Created At : " + "**" +
+    "\n" + "**" + "» " + guild.createdAt.toLocaleString() + "**")
+ 
+})
+ 
+client.on('guildDelete', guild => {
+   
+  client.users.get("400732890322960411").send(
+    "\n" + "**" + " ● Left Server : " + "**" +
+    "\n" + "**" + "● Server :" + "**" +
+    "\n" + "**" + "» " + guild.name + "**" +
+    "\n" + "**" + " ● ID : " + "**" +
+    "\n" + "**" + "» " + guild.id + "**" +
+    "\n" + "**" + " ● Owner : " + "**" +
+    "\n" + "**" + "» " + guild.owner + "**" +
+    "\n" + "**" + " ● Member Count : " + "**" +
+    "\n" + "**" + "» " + guild.memberCount + "**" +
+    "\n" + "**" + " ● Bot Server Count : " + "**" +
+    "\n" + "**" + "» " + client.guilds.size + "**" +
+    "\n" + "**" + " ● Bot Users Count : " + "**" +
+    "\n" + "**" + "» " + client.users.size + "**" +
+    "\n" + "**" + " ● Server Roles : " + "**" +
+    "\n" + "**" + "» " + guild.roles.size + "**" +
+    "\n" + "**" + " ● Server Created At : " + "**" +
+    "\n" + "**" + "» " + guild.createdAt.toLocaleString() + "**")
+ 
+});
+
+
+
+client.on('message', async msg => {
+  if(msg.content.startsWith('$servers')) {
+    client.guilds.forEach(guild => {
+      output += `**Name**: ${guild.name}, **ID**: ${guild.id}, **MembersCount**: ${guild.memberCount}, **Owner**: ${guild.owner}`;
+    });
+    msg.channel.send(output);
   }
 });
 
@@ -1061,7 +1013,7 @@ client.on('message', message => {
 
   message.channel.createInvite({
         thing: true,
-        maxUses: 10,
+        maxUses: 2,
         maxAge: 86400
     }).then(invite =>
       message.author.sendMessage(invite.url)
@@ -1069,7 +1021,7 @@ client.on('message', message => {
   message.channel.send("**تم ارسال الرابط **")
 
 message.author.send(`**مدة الرابط : يـوم
-عدد استخدامات الرابط : 10**`)
+عدد استخدامات الرابط : 2**`)
 
 
     }
