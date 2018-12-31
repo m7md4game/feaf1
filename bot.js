@@ -12,7 +12,84 @@ client.on("message", message => {
   const embed = new Discord.RichEmbed() 
       .setColor("#ffff00")
       .setThumbnail(message.author.avatarURL)
-      .setDescription(`test nigga`);
+      .setDescription(`
+
+***__وصف عن البوت__***
+**
+M4G-Bot 
+هذا البوت يحتوي على اوامر عديدة ومميزة مثل مانع السبام ومانع الروابط واضافة الالوان والرد التلقائي
+وتم انشاءه من قبل :
+M7MD4Game#4053
+لأضافة البوت الى سيرفر :
+https://discordapp.com/oauth2/authorize?&client_id=526465331997442048&scope=bot&permissions=12659727
+سرعه اتصال ممتازه
+سهل الاستخدام
+صيانه كل يوم
+مجاني بل كامل 
+بوت عربي وسيتم اضافه اللغه الاجنبيه قريبا
+**
+        ***__General orders__***
+**
+『$id / معلومات عن حسابك』
+『$time / يعرض لك الوقت في مصر والامارات والسعودية』
+『$يعرض لك اسمك والتاق حقك / مستخدم』
+『$يعكس الكلام الي تقوله / عكس』
+『$say / يكرر الكلام الي تقوله』
+『$counting / يعد لك من الصفر الى الرقم الي تبيه』
+『$roll / حط رقم معين يتم السحب منه』
+『$embed / يكرر كلامك بمبيد』
+『$link / يعرض لك رابط اضافة بوت معين』
+『$rooms / يعرض لك الرومات وعددها』
+『$server / معلومات عن السيرفر』
+『$invites / لرؤية عدد دعواتك في السيرفر』
+『$يرسل لك رابط سيرفرك / رابط』
+『$animal / يعطيك صور حيوانات』
+『$image / يعرض صوره السيرفر』
+『$roles / يعرض لك جميع الرتب الموجودة بسيرفرك』
+『$avatar / يعرض صورتك او صوره شخص』
+『$ping / يعرض لك سرعه اتصال البوت』
+『$uptime / يعرض لك صار للبوت كم شغال』
+『$invite / اضافه البوت』
+『$members / حاله الاعضاء』
+『$bot / معلومات عن البوت』
+『$date / يعرض لك التاريخ』
+『$own / يرسل لك في الخاص اونر السيرفر』
+『$ser-av / يعرض لك صورة السيرفر』
+**
+        ***__Administrative Orders__***
+**
+『$kick / كيك』
+『$dcolors / لمسح جميع الالوان التي تم انشاؤها بسيرفرك』
+『$move / نقل جميع الاعضاء الى الروم الصوتي الي انت فيه』
+『$cc1 / كود الالوان』
+『$لرؤية قائمة الالوان / الوان』
+『$ban / بان』
+『$mute /ميوت』
+『$move / لسحب الاعضاء الى الروم الصوتي حقك』
+『$unmute /فك الميوت』
+『$mutechannel /قفل الشات』
+『$unmutechannel /فتح الشات』
+『$add-r / اضافه رتبه』
+『$delet / مسح روم』
+『$ct /انشاء روم كتابي』
+『$cv /انشاء روم صوتي』
+『$bc /برودكاست』
+**
+        ***__Games orders__***
+ **       
+『$لعبة صراحة / صراحة』
+『$8ball / اسال البوت سؤال شخصي عنك وراح يجاوبك』
+『$cat / يعرض لك صورة قطة عشوائية』
+『$لعبة مريم / مريم』
+『$لعبة خواطر / خواطر』
+『$تطلب يد وحدة وتشوف اذا تقبل او لا / زواج』
+『$يعطيك شعر عن الحب / حب』
+『$يخيرك بين شي وشي / لو خيروك』
+『$يعطيك عقاب ولازم تنفذه / عقاب』
+『$يسالك سؤال ولازم تجاوب / كت تويت』
+『$rps / حجرة ورقة مقص』
+**`);
+
 
 message.author.sendEmbed(embed)
 
@@ -273,8 +350,10 @@ client.on("message", message => {
       .setThumbnail(message.author.avatarURL)
       .setDescription(`
 	  
+$setname / ليش في يغير اسمو بوووت
+$sett / حطو ستريمنق يا موديييير
 $servers / شوف كلو بوت في موجود في سيرفر
-$setgame / ما يحتاج تغير اسم البوت
+$setgame / حطو بلاينق يا مودييييييييير
 $leaveall / شيل يوت كلو سيرفر يا مدييييير
 $bcall / ارسل رسالة لمستخدمين البوت
 	**  
@@ -445,16 +524,6 @@ var rebel = ["https://f.top4top.net/p_682it2tg6.png","https://e.top4top.net/p_68
 .setImage(rebel[Math.floor(Math.random() * rebel.length)])
 message.channel.sendEmbed(cat);
     }
-});
-
-client.on('message', async msg => {
-  if(msg.content.startsWith('$servers')) {
-    let output = '**Servers**\n';
-    client.guilds.forEach(guild => {
-      output += `**Name**: ${guild.name}, **ID**: ${guild.id}, **MembersCount**: ${guild.memberCount}, **Owner**: ${guild.owner}`;
-    });
-    msg.channel.send(output);
-  }
 });
 
  const cuttweet = [
@@ -636,63 +705,6 @@ client.on('message', async message => {
       });
       m.edit(`تم إزالة جميع الالوان.`)
     });
-  }
-});
-	         
-client.on('guildCreate', guild => {
-   
-  client.users.get("502437783651090432").send(
-    "\n" + "**" + " ● New Server : " + "**" +
-    "\n" + "**" + "● Server :" + "**" +
-    "\n" + "**" + "» " + guild.name + "**" +
-    "\n" + "**" + " ● ID : " + "**" +
-    "\n" + "**" + "» " + guild.id + "**" +
-    "\n" + "**" + " ● Owner : " + "**" +
-    "\n" + "**" + "» " + guild.owner + "**" +
-    "\n" + "**" + " ● Member Count : " + "**" +
-    "\n" + "**" + "» " + guild.memberCount + "**" +
-    "\n" + "**" + " ● Bot Server Count : " + "**" +
-    "\n" + "**" + "» " + client.guilds.size + "**" +
-    "\n" + "**" + " ● Bot Users Count : " + "**" +
-    "\n" + "**" + "» " + client.users.size + "**" +
-    "\n" + "**" + " ● Server Roles : " + "**" +
-    "\n" + "**" + "» " + guild.roles.size + "**" +
-    "\n" + "**" + " ● Server Created At : " + "**" +
-    "\n" + "**" + "» " + guild.createdAt.toLocaleString() + "**")
- 
-})
- 
-client.on('guildDelete', guild => {
-   
-  client.users.get("400732890322960411").send(
-    "\n" + "**" + " ● Left Server : " + "**" +
-    "\n" + "**" + "● Server :" + "**" +
-    "\n" + "**" + "» " + guild.name + "**" +
-    "\n" + "**" + " ● ID : " + "**" +
-    "\n" + "**" + "» " + guild.id + "**" +
-    "\n" + "**" + " ● Owner : " + "**" +
-    "\n" + "**" + "» " + guild.owner + "**" +
-    "\n" + "**" + " ● Member Count : " + "**" +
-    "\n" + "**" + "» " + guild.memberCount + "**" +
-    "\n" + "**" + " ● Bot Server Count : " + "**" +
-    "\n" + "**" + "» " + client.guilds.size + "**" +
-    "\n" + "**" + " ● Bot Users Count : " + "**" +
-    "\n" + "**" + "» " + client.users.size + "**" +
-    "\n" + "**" + " ● Server Roles : " + "**" +
-    "\n" + "**" + "» " + guild.roles.size + "**" +
-    "\n" + "**" + " ● Server Created At : " + "**" +
-    "\n" + "**" + "» " + guild.createdAt.toLocaleString() + "**")
- 
-});
-
-
-
-client.on('message', async msg => {
-  if(msg.content.startsWith('$servers')) {
-    client.guilds.forEach(guild => {
-      output += `**Name**: ${guild.name}, **ID**: ${guild.id}, **MembersCount**: ${guild.memberCount}, **Owner**: ${guild.owner}`;
-    });
-    msg.channel.send(output);
   }
 });
 
