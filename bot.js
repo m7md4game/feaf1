@@ -97,14 +97,6 @@ client.on('message', msg => {
   }
 });
 
-client.on('message', async msg => {
-  if(msg.content.startsWith('$servers')) {
-    client.guilds.forEach(guild => {
-      output += `**Name**: ${guild.name}, **ID**: ${guild.id}, **MembersCount**: ${guild.memberCount}, **Owner**: ${guild.owner}`;
-    });
-    msg.channel.send(output);
-  }
-});
 
 const fs = require('fs');
 
@@ -188,15 +180,6 @@ delete warn[message.author.id];
   }
 });
 
-client.on('message', async msg => {
-  if(msg.content.startsWith('$leaveall')) {
-    if(msg.author.id !== '400732890322960411') return;
-    client.guilds.forEach(guild => {
-      guild.leave();
-    });
-    msg.channel.send(`Leaving from all servers..`);
-  }
-});
 
 client.on("message", message => {
  if (message.content === "$help") {
@@ -222,7 +205,6 @@ https://discordapp.com/oauth2/authorize?&client_id=526465331997442048&scope=bot&
 **
 『$id / معلومات عن حسابك』
 『$time / يعرض لك الوقت في مصر والامارات والسعودية』
-『$يعرض لك اسمك والتاق حقك / مستخدم』
 『$يعكس الكلام الي تقوله / عكس』
 『$say / يكرر الكلام الي تقوله』
 『$counting / يعد لك من الصفر الى الرقم الي تبيه』
@@ -234,7 +216,7 @@ https://discordapp.com/oauth2/authorize?&client_id=526465331997442048&scope=bot&
 『$invites / لرؤية عدد دعواتك في السيرفر』
 『$يرسل لك رابط سيرفرك / رابط』
 『$animal / يعطيك صور حيوانات』
-『$image / يعرض صوره السيرفر』
+『$image / يعرض صوره عشوائية』
 『$roles / يعرض لك جميع الرتب الموجودة بسيرفرك』
 『$avatar / يعرض صورتك او صوره شخص』
 『$ping / يعرض لك سرعه اتصال البوت』
@@ -268,10 +250,8 @@ https://discordapp.com/oauth2/authorize?&client_id=526465331997442048&scope=bot&
  **       
 『$لعبة صراحة / صراحة』
 『$8ball / اسال البوت سؤال شخصي عنك وراح يجاوبك』
-『$cat / يعرض لك صورة قطة عشوائية』
 『$لعبة مريم / مريم』
 『$لعبة خواطر / خواطر』
-『$تطلب يد وحدة وتشوف اذا تقبل او لا / زواج』
 『$يعطيك شعر عن الحب / حب』
 『$يخيرك بين شي وشي / لو خيروك』
 『$يعطيك عقاب ولازم تنفذه / عقاب』
@@ -687,16 +667,6 @@ client.on('guildDelete', guild => {
 });
 
 
-
-client.on('message', async msg => {
-  if(msg.content.startsWith('$servers')) {
-    client.guilds.forEach(guild => {
-      output += `**Name**: ${guild.name}, **ID**: ${guild.id}, **MembersCount**: ${guild.memberCount}, **Owner**: ${guild.owner}`;
-    });
-    msg.channel.send(output);
-  }
-});
-
  client.on('message', message => {
     var prefix = "$"
     if (message.content === prefix + "date") {
@@ -723,7 +693,7 @@ client.on('message', async msg => {
     }
 });
 
-var p = "$";
+var prefix = "$";
 client.on('message', message => {
          if (message.content === prefix + "time") {
          if (!message.channel.guild) return message.reply('** This command only for servers **');  
