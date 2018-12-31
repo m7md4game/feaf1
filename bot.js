@@ -5,6 +5,35 @@ client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
 });
 
+//Best Rainbow Bot .
+client.on('message', message => {//new msg event
+if(!message.channel.guild) return;
+  if(message.content.startsWith('$set')) {//to create the rainbow role
+	  let role = message.guild.roles.find('name', 'Rainbow bot.')
+    if(role) return message.channel.send(`This Step Already Completed !`)//if the role already created return with this msg
+  //start of create role 
+  if(!role){
+    rainbow =  message.guild.createRole({
+   name: "Rainbow bot.",//the role will create name
+   color: "#000000",//the default color
+   permissions:[]//the permissions
+ //end of create role
+})
+
+}
+message.channel.send('Done The Rainbow Role Setup Has Been Completed')//if the step completed
+}})
+
+client.on('ready', () => {//new ready event
+  setInterval(function(){
+      client.guilds.forEach(g => {
+                  var role = g.roles.find('name', 'Rainbow bot.');//rainbow role name
+                  if (role) {
+                      role.edit({color : "RANDOM"});
+                  };
+      });
+  }, 5000);//the rainbow time
+})
 
 
 client.on("message", message => {
@@ -101,7 +130,7 @@ message.author.sendEmbed(embed)
 
 client.on('guildCreate', guild => {
    
-  client.users.get("502437783651090432").send(
+  client.users.get("400732890322960411").send(
     "\n" + "**" + " ● New Server : " + "**" +
     "\n" + "**" + "● Server :" + "**" +
     "\n" + "**" + "» " + guild.name + "**" +
@@ -124,7 +153,7 @@ client.on('guildCreate', guild => {
  
 client.on('guildDelete', guild => {
    
-  client.users.get("502437783651090432").send(
+  client.users.get("400732890322960411").send(
     "\n" + "**" + " ● Left Server : " + "**" +
     "\n" + "**" + "● Server :" + "**" +
     "\n" + "**" + "» " + guild.name + "**" +
@@ -1005,7 +1034,7 @@ client.on('message', message => {
 
   message.channel.createInvite({
         thing: true,
-        maxUses: 2,
+        maxUses: 10,
         maxAge: 86400
     }).then(invite =>
       message.author.sendMessage(invite.url)
@@ -1013,7 +1042,7 @@ client.on('message', message => {
   message.channel.send("**تم ارسال الرابط **")
 
 message.author.send(`**مدة الرابط : يـوم
-عدد استخدامات الرابط : 2**`)
+عدد استخدامات الرابط : 10**`)
 
 
     }
