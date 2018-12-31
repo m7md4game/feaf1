@@ -286,25 +286,6 @@ message.author.sendEmbed(embed)
 }
 }); 
 
-client.on("message", message => {
- if (message.content === "!help-ad") {
-  const embed = new Discord.RichEmbed() 
-      .setColor("#ffff00")
-      .setThumbnail(message.author.avatarURL)
-      .setDescription(`
-	  
-$servers / شوف كلو بوت في موجود في سيرفر
-$setgame / ما يحتاج تغير اسم البوت
-$leaveall / شيل يوت كلو سيرفر يا مدييييير
-$bcall / ارسل رسالة لمستخدمين البوت
-	**  
-`)
-
-message.author.sendEmbed(embed)
-
-}
-});
-
 const Sra7a = [
      'صراحه  |  صوتك حلوة؟',
      'صراحه  |  التقيت الناس مع وجوهين؟',
