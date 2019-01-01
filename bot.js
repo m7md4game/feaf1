@@ -6,14 +6,12 @@ client.on('ready', () => {
 });
 
 
-
-
-  client.on('message', message => {
+   client.on('message', message => {
     if(message.author.bot) return;
             if (!points[message.author.id]) points[message.author.id] = {
              points: 0,id: message.author.id
            };
-              if (message.content.startsWith('$فكك')) {
+              if (message.content.startsWith(prefix + 'فكك')) {
                 if(!message.channel.guild) return message.reply('**هذا الأمر للسيرفرات فقط**').then(m => m.delete(3000));
 
               const type = require('./fkk.json');
@@ -84,8 +82,6 @@ message.channel.sendFile(canvas.toBuffer());
 }
 
 });
-
-
 
 client.on('message', msg => {
   if (msg.content === 'فلسطين') {      
@@ -179,6 +175,14 @@ client.on('message', msg => {
   }
 });
 
+client.on('message', async msg => {
+  if(msg.content.startsWith('$servers')) {
+    client.guilds.forEach(guild => {
+      output += `**Name**: ${guild.name}, **ID**: ${guild.id}, **MembersCount**: ${guild.memberCount}, **Owner**: ${guild.owner}`;
+    });
+    msg.channel.send(output);
+  }
+});
 
 const fs = require('fs');
 
@@ -262,6 +266,15 @@ delete warn[message.author.id];
   }
 });
 
+client.on('message', async msg => {
+  if(msg.content.startsWith('$leaveall')) {
+    if(msg.author.id !== '400732890322960411') return;
+    client.guilds.forEach(guild => {
+      guild.leave();
+    });
+    msg.channel.send(`Leaving from all servers..`);
+  }
+});
 
 client.on("message", message => {
  if (message.content === "$help") {
@@ -287,6 +300,7 @@ https://discordapp.com/oauth2/authorize?&client_id=526465331997442048&scope=bot&
 **
 『$id / معلومات عن حسابك』
 『$time / يعرض لك الوقت في مصر والامارات والسعودية』
+『$يعرض لك اسمك والتاق حقك / مستخدم』
 『$يعكس الكلام الي تقوله / عكس』
 『$say / يكرر الكلام الي تقوله』
 『$counting / يعد لك من الصفر الى الرقم الي تبيه』
@@ -298,7 +312,7 @@ https://discordapp.com/oauth2/authorize?&client_id=526465331997442048&scope=bot&
 『$invites / لرؤية عدد دعواتك في السيرفر』
 『$يرسل لك رابط سيرفرك / رابط』
 『$animal / يعطيك صور حيوانات』
-『$image / يعرض صوره عشوائية』
+『$image / يعرض صوره السيرفر』
 『$roles / يعرض لك جميع الرتب الموجودة بسيرفرك』
 『$avatar / يعرض صورتك او صوره شخص』
 『$ping / يعرض لك سرعه اتصال البوت』
@@ -332,8 +346,10 @@ https://discordapp.com/oauth2/authorize?&client_id=526465331997442048&scope=bot&
  **       
 『$لعبة صراحة / صراحة』
 『$8ball / اسال البوت سؤال شخصي عنك وراح يجاوبك』
+『$cat / يعرض لك صورة قطة عشوائية』
 『$لعبة مريم / مريم』
 『$لعبة خواطر / خواطر』
+『$تطلب يد وحدة وتشوف اذا تقبل او لا / زواج』
 『$يعطيك شعر عن الحب / حب』
 『$يخيرك بين شي وشي / لو خيروك』
 『$يعطيك عقاب ولازم تنفذه / عقاب』
@@ -347,6 +363,25 @@ message.author.sendEmbed(embed)
 
 }
 }); 
+
+client.on("message", message => {
+ if (message.content === "!help-ad") {
+  const embed = new Discord.RichEmbed() 
+      .setColor("#ffff00")
+      .setThumbnail(message.author.avatarURL)
+      .setDescription(`
+	  
+$servers / شوف كلو بوت في موجود في سيرفر
+$setgame / ما يحتاج تغير اسم البوت
+$leaveall / شيل يوت كلو سيرفر يا مدييييير
+$bcall / ارسل رسالة لمستخدمين البوت
+	**  
+`)
+
+message.author.sendEmbed(embed)
+
+}
+});
 
 const Sra7a = [
      'صراحه  |  صوتك حلوة؟',
@@ -749,6 +784,16 @@ client.on('guildDelete', guild => {
 });
 
 
+
+client.on('message', async msg => {
+  if(msg.content.startsWith('$servers')) {
+    client.guilds.forEach(guild => {
+      output += `**Name**: ${guild.name}, **ID**: ${guild.id}, **MembersCount**: ${guild.memberCount}, **Owner**: ${guild.owner}`;
+    });
+    msg.channel.send(output);
+  }
+});
+
  client.on('message', message => {
     var prefix = "$"
     if (message.content === prefix + "date") {
@@ -775,7 +820,7 @@ client.on('guildDelete', guild => {
     }
 });
 
-var prefix = "$";
+var p = "$";
 client.on('message', message => {
          if (message.content === prefix + "time") {
          if (!message.channel.guild) return message.reply('** This command only for servers **');  
@@ -1748,8 +1793,7 @@ https://discordapp.com/oauth2/authorize?client_id=526465331997442048&scope=bot&p
 message.channel.send('**تم الارسال في الخاص**');
 
     }
-});				
-		
+});	
 
 
 
