@@ -99,14 +99,7 @@ client.on('message', msg => {
   }
 });
 
-client.on('message', async msg => {
-  if(msg.content.startsWith('$servers')) {
-    client.guilds.forEach(guild => {
-      output += `**Name**: ${guild.name}, **ID**: ${guild.id}, **MembersCount**: ${guild.memberCount}, **Owner**: ${guild.owner}`;
-    });
-    msg.channel.send(output);
-  }
-});
+
 
 const fs = require('fs');
 
@@ -295,7 +288,6 @@ client.on("message", message => {
       .setThumbnail(message.author.avatarURL)
       .setDescription(`
 	  
-$servers / شوف كلو بوت في موجود في سيرفر
 $setgame / ما يحتاج تغير اسم البوت
 $leaveall / شيل يوت كلو سيرفر يا مدييييير
 $bcall / ارسل رسالة لمستخدمين البوت
