@@ -14,7 +14,7 @@ client.on('ready', () => {
             if (!points[message.author.id]) points[message.author.id] = {
              points: 0,id: message.author.id
            };
-              if (message.content.startsWith(prefix + 'فكك')) {
+              if (message.content.startsWith('$فكك')) {
                 if(!message.channel.guild) return message.reply('**هذا الأمر للسيرفرات فقط**').then(m => m.delete(3000));
 
               const type = require('./fkk.json');
