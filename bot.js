@@ -1,5 +1,6 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
+const prefix = "$";
 
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
@@ -8,7 +9,6 @@ client.on('ready', () => {
 
 
 
-const prefix = '$'
   client.on('message', message => {
     if(message.author.bot) return;
             if (!points[message.author.id]) points[message.author.id] = {
