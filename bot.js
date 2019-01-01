@@ -84,9 +84,7 @@ https://discordapp.com/oauth2/authorize?&client_id=526465331997442048&scope=bot&
 『$عقاب / يعطيك عقاب ولازم تنفذه』
 『$كت تويت / يعطيك سؤال ولازم تجاوبه』
 『$rps / حجرة ورقة مقص』
-**
-        
-`)
+**`)
 
 message.author.sendEmbed(embed)
 
