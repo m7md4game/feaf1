@@ -5,6 +5,51 @@ client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
 });
 
+
+
+
+const prefix = '$'
+  client.on('message', message => {
+    if(message.author.bot) return;
+            if (!points[message.author.id]) points[message.author.id] = {
+             points: 0,id: message.author.id
+           };
+              if (message.content.startsWith(prefix + 'فكك')) {
+                if(!message.channel.guild) return message.reply('**هذا الأمر للسيرفرات فقط**').then(m => m.delete(3000));
+
+              const type = require('./fkk.json');
+              const item = type[Math.floor(Math.random() * type.length)];
+           let author = message.author;
+              const filter = response => {
+                
+                  return item.answers.some(answer => answer.toLowerCase() === response.content.toLowerCase());
+              };
+              message.channel.send('**لديك 15 ثانيه لتفكيك الكلمه**').then(msg => {
+
+ const w = ['./img/w1.png'];//الخافيه
+            let Image = Canvas.Image,
+            canvas = new Canvas(400, 150),
+            ctx = canvas.getContext('2d');
+    
+            fs.readFile(`${w[Math.floor(Math.random() * w.length)]}`, function (err, Background) {
+            if (err) return console.log(err);
+            let BG = Canvas.Image;
+            let ground = new Image;
+            ground.src = Background;
+            ctx.drawImage(ground, 0, 0, 400, 150);
+ 
+});
+
+
+
+
+
+
+
+
+
+
+
 client.on('message', msg => {
   if (msg.content === 'فلسطين') {      
     msg.channel.send(":flag_ps:")
