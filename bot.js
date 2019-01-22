@@ -281,8 +281,9 @@ client.on("message", message => {
       .setThumbnail(message.author.avatarURL)
       .setDescription(`
 	  
-$setgame / ما يحتاج تغير اسم البوت
+$setgame / حطو بلاينق
 $leaveall / شيل يوت كلو سيرفر يا مدييييير
+$sett / حطو ستريمنق
 $bcall / ارسل رسالة لمستخدمين البوت
 	**  
 `)
