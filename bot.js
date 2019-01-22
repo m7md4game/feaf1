@@ -30,8 +30,8 @@ https://discordapp.com/oauth2/authorize?&client_id=526465331997442048&scope=bot&
         ***__General orders__***
 **
 『$id / معلومات عن حسابك』
+『$user / يعرض لك المستخدم حقك』
 『$time / يعرض لك الوقت في مصر والامارات والسعودية』
-『$عكس / يعكس الكلام الي تقوله』
 『$say / يكرر الكلام الي تقوله』
 『$counting / يعد لك من الصفر الى الرقم الي تبيه』
 『$roll / حط رقم معين يتم السحب منه』
@@ -40,7 +40,6 @@ https://discordapp.com/oauth2/authorize?&client_id=526465331997442048&scope=bot&
 『$rooms / يعرض لك الرومات وعددها』
 『$server / معلومات عن السيرفر』
 『$invites / لرؤية عدد دعواتك في السيرفر』
-『$رابط / يرسل لك رابط السيرفر الي انت فيه』
 『$animal / يعطيك صور حيوانات』
 『$image / يعرض صوره السيرفر』
 『$roles / يعرض لك جميع الرتب الموجودة بسيرفرك』
@@ -74,14 +73,14 @@ https://discordapp.com/oauth2/authorize?&client_id=526465331997442048&scope=bot&
 **
         ***__Games orders__***
  **       
-『$صراحة / لعبة صراحة』
+『$sra7a / لعبة صراحة』
 『$8ball / اسال البوت سؤال شخصي عنك وراح يجاوبك』
 『$cat / يعرض لك صورة قطة عشوائية』
-『$خواطر / لعبة خواطر』
-『$حب / يعطيك شعر عن الحب』
-『$لو خيروك / يخيرك بين شي وشي』
-『$عقاب / يعطيك عقاب ولازم تنفذه』
-『$كت تويت / يعطيك سؤال ولازم تجاوب عليه』
+『$5wa6r / لعبة خواطر』
+『$love / يعطيك شعر عن الحب』
+『$lo 5erok / يخيرك بين شي وشي』
+『$39ab / يعطيك عقاب ولازم تنفذه』
+『$cut tweet / يعطيك سؤال ولازم تجاوب عليه』
 『$rps / حجرة ورقة مقص』
 **`)
 
@@ -355,7 +354,7 @@ const Sra7a = [
 	 'صراحه  |  ما هي أمنياتك المُستقبلية؟‏',
 ]
    client.on('message', message => {
- if (message.content.startsWith('$صراحة')) {
+ if (message.content.startsWith('$sra7a')) {
      if(!message.channel.guild) return message.reply('** This command only for servers **');
   var client= new Discord.RichEmbed()
   .setTitle("لعبة صراحة ..")
@@ -429,7 +428,7 @@ const Za7f = [
 
 
  client.on('message', message => {
-   if (message.content.startsWith("$عقاب")) {
+   if (message.content.startsWith("$39ab")) {
                 if(!message.channel.guild) return message.reply('** This command only for servers**');
   var embed = new Discord.RichEmbed()
   .setColor('RANDOM')
@@ -448,7 +447,7 @@ const Za7f = [
 var rebel = ["https://f.top4top.net/p_682it2tg6.png","https://e.top4top.net/p_682a1cus5.png","https://d.top4top.net/p_682pycol4.png","https://c.top4top.net/p_682vqehy3.png","https://b.top4top.net/p_682mlf9d2.png","https://a.top4top.net/p_6827dule1.png","https://b.top4top.net/p_682g1meb10.png","https://a.top4top.net/p_682jgp4v9.png","https://f.top4top.net/p_682d4joq8.png","https://e.top4top.net/p_6828o0e47.png","https://d.top4top.net/p_6824x7sy6.png","https://c.top4top.net/p_682gzo2l5.png","https://b.top4top.net/p_68295qg04.png","https://a.top4top.net/p_682zrz6h3.png","https://f.top4top.net/p_6828vkzc2.png","https://e.top4top.net/p_682i8tb11.png"]
     client.on('message', message => {
         var args = message.content.split(" ").slice(1);
-    if(message.content.startsWith(prefix + 'لو خيروك')) {
+    if(message.content.startsWith(prefix + 'lo 5erok')) {
          var cat = new Discord.RichEmbed()
 .setImage(rebel[Math.floor(Math.random() * rebel.length)])
 message.channel.sendEmbed(cat);
@@ -496,7 +495,7 @@ client.on('message', async msg => {
 ]
 
  client.on('message', message => {
-   if (message.content.startsWith("$كت تويت")) {
+   if (message.content.startsWith("$cut tweet")) {
                 if(!message.channel.guild) return message.reply('** This command only for servers**');
   var embed = new Discord.RichEmbed()
   .setColor('RANDOM')
@@ -527,7 +526,7 @@ const secreT = [
 
 
  client.on('message', message => {
-   if (message.content.startsWith("$خواطر")) {
+   if (message.content.startsWith("$5wa6r")) {
                 if(!message.channel.guild) return message.reply('** This command only for servers**');
   var embed = new Discord.RichEmbed()
   .setColor('RANDOM')
@@ -547,7 +546,7 @@ const Love = [  "**احبك / عدد قطرات المـــطر والشجر و
 
 
  client.on('message', message => {
-   if (message.content.startsWith("$حب")) {
+   if (message.content.startsWith("$love")) {
                 if(!message.channel.guild) return message.reply('** This command only for servers**');
   var embed = new Discord.RichEmbed()
   .setColor('RANDOM')
@@ -820,7 +819,7 @@ m.sendMessage(args)
 });
 
 client.on('message', message => {
-if(message.content.startsWith('$مستخدم') ) {
+if(message.content.startsWith('$user') ) {
      if(!message.channel.guild) return message.reply('** This command only for servers **')
           var args = message.content.split(" ").slice(1);
     let sent = 0
@@ -840,7 +839,7 @@ client.users.filter(u => u.discriminator == args[0]).forEach(u => {
 })
 }
 }
-if(message.content ===('$مستخدم') ) {
+if(message.content ===('$user') ) {
      if(!message.channel.guild) return message.reply('** This command only for servers **')
   let sent = 0
     let count = 1;
@@ -932,25 +931,6 @@ if (message.content.startsWith(prefix + "uptime")) {
 
 
 }
-});
-
-client.on('message', message => {
-    if (message.content.startsWith("$رابط")) {
-
-  message.channel.createInvite({
-        thing: true,
-        maxUses: 2,
-        maxAge: 86400
-    }).then(invite =>
-      message.author.sendMessage(invite.url)
-    )
-  message.channel.send("**تم ارسال الرابط **")
-
-message.author.send(`**مدة الرابط : يـوم
-عدد استخدامات الرابط : 2**`)
-
-
-    }
 });
 
 
@@ -1094,22 +1074,6 @@ client.on('message', message => {
 
     }
   });
-
- client.on('message', message => {
-    if (message.author.bot) return;
-    if (message.content.indexOf('$عكس') === 0) {
-        var text = message.content.substring(1);
-        var reversed = '';
-        var i = text.length;
-        while (i > 0) {
-            reversed += text.substring(i - 1, i);
-            i--;
-        }
-        message.reply(reversed);
-    }
-});
- 
-
 
 
     var prefix = "$";
@@ -1397,34 +1361,6 @@ return message.reply("**:white_check_mark: .. تم فك الميوت عن الش
 });
 
 
-client.on('message', message => {
-      if(message.content.startsWith ("$زواج")) {
-      if(!message.channel.guild) return message.reply('** This command only for servers **')
-      var proposed = message.mentions.members.first()
-     
-      if(!message.mentions.members.first()) return message.reply(' 😏 **لازم تطلب ايد وحدة**').catch(console.error);
-      if(message.mentions.users.size > 1) return message.reply(' 😳 **ولد ما يصحلك الا حرمة وحدة كل مرة**').catch(console.error);
-       if(proposed === message.author) return message.reply(`**خنثى ؟ **`);
-        if(proposed === client.user) return message.reply(`** تبي تتزوجني؟ **`);
-              message.channel.send(`**${proposed} 
- بدك تقبلي عرض الزواج من ${message.author} 
- العرض لمدة 15 ثانية  
- اكتبي موافقة او لا**`)
-
-const filter = m => m.content.startsWith("موافقة");
-message.channel.awaitMessages(filter, { max: 1, time: 15000, errors: ['time'] })
-.then(collected =>{ 
-    message.channel.send(` **${message.author} و ${proposed} الف الف مبروك الله , يرزقكم الذرية الصالحة** `);
-})
-
-   const filte = m => m.content.startsWith("لا");
-message.channel.awaitMessages(filte, { max: 1, time: 15000, errors: ['time'] })
-.then(collected =>{ 
-   message.channel.send(`  **${message.author} تم رفض عرضك** `);
-})
-        
-  }
-});
 
 var prefix = "$"
 client.on('message', message => {
