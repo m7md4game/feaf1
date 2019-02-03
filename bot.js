@@ -10,7 +10,7 @@ client.on('message', message => {
 if (!points[message.author.id]) points[message.author.id] = { // يقوم الكود تلقائياً في حال لم يجد نقاط العضو بإنشاء نقاط له ويتم إرسالها الملف المخصص
 	points: 0,
   };
-if (message.content.startsWith(prefix + 'سرعة')) { // $سرعة
+if (message.content.startsWith( 'سرعة')) { //$سرعة
 	if(!message.channel.guild) return message.reply('**هذا الأمر للسيرفرات فقط**').then(m => m.delete(3000));
 
 const type = require('./typing/type.json'); // في هذا السطر يقوم الكود بقراءة ملف الأسئلة
