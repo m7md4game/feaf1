@@ -1,6 +1,5 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
-const prefix = $;
 
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
@@ -94,6 +93,7 @@ message.author.sendEmbed(embed)
 
 const google = require('google-it');
 client.on('message', message => {
+var prefix = $;
  let args = message.content.split(' ').slice(1);
     if(message.content.startsWith('prefix + google')) {
     const input = args.join(' ');
