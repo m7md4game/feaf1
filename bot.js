@@ -11,7 +11,7 @@ client.on('guildCreate', guild => {
 });
 
 
-var prefix = "$";
+
 client.on("message", function(message) {
   if (message.author.bot) return;
   if (message.content.indexOf(prefix) !== 0) return;
