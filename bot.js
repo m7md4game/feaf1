@@ -1,6 +1,5 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
-const prefix = "$";
 
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
@@ -10,6 +9,55 @@ client.on('guildCreate', guild => {
 	console.log(`Added to a server by: ${guild.owner.user.username} || Server name: ${guild.name} || Users: ${guild.memberCount}`); // ايفنت يقوم بإرسال إلى الكونسل بأنه قد قامت احد السيرفر بدعوة البوت
 });
 
+const google = require('google-it');
+client.on('message', message => {
+ let args = message.content.split(' ').slice(1);
+    if(message.content.startsWith('$google')) {
+    const input = args.join(' ');
+
+google({ query: input, disableConsole: true }).then(results => {
+    return message.channel.send(`\n\n**Title**: ${results[0].title}\n***Link***: ${results[0].link}\nDescription: ${results[0].snippet}`);
+}).catch(error => {
+    if (error) throw error;
+});
+
+}})
+
+if(!hero) {
+  let hero = client;
+}
+hero.on('message',async message => {
+  if(message.author.bot || message.channel.type === 'dm') return;
+  if(!message.content.startsWith(prefix)) return;
+  let cmd = message.content.split(" ")[0].substring(prefix.length);
+  let args = message.content.split(" ").slice(1);
+  
+  if(cmd === 'package') {
+    let registry = `http://registry.npmjs.com/`;
+    let fetch = require('node-fetch');
+    if(!args[0]) return message.reply(`- Please Type the package name first`);
+    
+    fetch(`${registry}${args[0]}`)
+    .then(res => res.json())
+    .then(json => {
+      let version = json["dist-tags"].latest;
+      let name = json.name;
+      let packagejson = require('./package.json');
+      
+      packagejson["dependencies"][name] = version;
+      if(!RichEmbed) {
+        let { RichEmbed } = require('discord.js');
+      }
+      let i = new RichEmbed();
+      i.setColor("#36393e");
+      i.setThumbnail(message.author.avatarURL);
+      i.setDescription(`\`\`\`json\n${JSON.stringify(packagejson, null, 4)}\`\`\``);
+      
+      message.channel.send(i);
+    })
+    .catch(e => message.reply(`Couldn't find the package`));
+  }
+});
 
 
 
