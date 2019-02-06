@@ -11,55 +11,97 @@ client.on('guildCreate', guild => {
 });
 
 
-client.on('message', msg => {
 var prefix = "$";
-  if(!msg.guild) return;
-    if (msg.content.startsWith(prefix +'channels')) {
-     let args = msg.content.split(" ").slice(1);
-    if(!msg.channel.guild) return msg.channel.send('**هذا الأمر فقط للسيرفرات**').then(m => m.delete(5000));
-let eyadandr3d = new Discord.RichEmbed()
-.setThumbnail(msg.author.avatarURL)
-.setDescription(`                            📝ان كنت تريد انشاء روم صوتي اظغط علي الايموجي🎤                                                                                                                                                                                     الان كنت تريد انشاء مستند اضغط علي الايموجي                                                                                                                                                                                                                                                      
- ✏ان كنت تريد انشاء شات كتابي اظغط علي الايموجي `)
-.setFooter('لديك دقيقه للاختيار')
-msg.channel.send(eyadandr3d).then(message => {
-   
-   
- message.react('✏').then(r=>{
- message.react('🎤').then(r=>{
-           
- message.react('📝').then(r=>{
-                                   
-                             
-   
-let Category = (reaction, user) => reaction.emoji.name === '📝' && user.id === msg.author.id;
-let Text = (reaction, user) => reaction.emoji.name === '✏' && user.id === msg.author.id;
- let Voice = (reaction, user) => reaction.emoji.name === '🎤' && user.id === msg.author.id;
+client.on("message", function(message) {
+  if (message.author.bot) return;
+  if (message.content.indexOf(prefix) !== 0) return;
+  const args = message.content.slice(prefix.length).trim().split(/ +/g);
+  const command = args.shift().toLowerCase();
  
-let cy = message.createReactionCollector(Category, { time: 60000 });
-let tt = message.createReactionCollector(Text, { time: 60000 });
- let ve  = message.createReactionCollector(Voice, { time: 60000 });
- 
-ve.on("collect", r => {
-msg.guild.createChannel(args.join(' '), 'voice');
-    msg.channel.send(`☑ تم انشاء روم صوتي بنجاح : \`${args}\``)
-    msg.delete();
-})
-tt.on("collect", r => {
-msg.guild.createChannel(args.join(' '), 'text');
-    msg.channel.send(`☑ تم انشاء شات كتابي بنجاح : \`${args}\``)
-    msg.delete();
-})
-cy.on("collect", r => {
-msg.guild.createChannel(args.join(' '), 'category');
-    msg.channel.send(`☑ تم انشاء المستند بنجاح : \`${args}\``)
-    msg.delete();
-})
-})
-})
-})
-})
-}
+  if (command === "del") {
+    message.channel.send("اختر الروم الذي تريد حذفه")
+      .then(() => {
+        message.channel.awaitMessages(res => res.author.id == message.author.id , {
+        max: 1,
+        time: 30000,
+        errors: ['time']
+      })
+        .then((collected) => {
+          let mentionMessage = collected.first();
+          let channel = mentionMessage.mentions.channels.first();
+          mentionMessage.channel.send("select a time format\nwhere:\n[1] = second\n[2] = minute\n[3] = hour")
+            .then(function(botMessage) {
+              console.log(botMessage)
+              botMessage.react("1⃣")
+                .then(() => botMessage.react("2⃣") )
+                .then(() => botMessage.react("3⃣") )
+                .then(() => {
+                  let filter = (reaction, user) => user.id === message.author.id
+                  botMessage.awaitReactions(filter, {
+                    max: 1,
+                    time: 30000,
+                    errors: ['time']
+                  })
+                    .then(collected => {
+                      var reaction = collected.first();              
+                      if (reaction._emoji.name == "1⃣") {
+                        message.channel.send("اكتب عدد الثواني")
+                          .then(() => {
+                            message.channel.awaitMessages(res => res.author.id == message.author.id , {
+                              max: 1,
+                              time: 30000,
+                              errors: ['time']
+                            })
+                              .then((collected1) => {
+                                let content = collected1.first().content;
+                                message.channel.send(" سوف يتم حذف الروم بعد انتهاء الوقت")
+                                setTimeout(function() {
+                                  channel.delete()
+                                  message.channel.send(channel.name + " تم حذف روم")
+                                }, (1000*parseInt(content)))
+                              }).catch(console.error)
+                            }).catch(console.error)
+                        } else if (reaction._emoji.name == "2⃣") {
+                          message.channel.send("اكتب عدد الدقائق")
+                            .then(() => {
+                              message.channel.awaitMessages(res => res.author.id == message.author.id , {
+                                max: 1,
+                                time: 30000,
+                                errors: ['time']
+                            })
+                              .then((collected2) => {
+                                let content = collected2.first().content;
+                                message.channel.send(" سوف يتم حذف الروم بعد انتهاء الوقت")
+                                setTimeout(function() {
+                                  channel.delete()
+                                  message.channel.send(channel.name + "  تم حذف روم")
+                                }, (60000*parseInt(content)))
+                              }).catch(console.error)
+                          }).catch(console.error)
+                        } else if(reaction._emoji.name == "3⃣") {
+                          message.channel.send("اكتب عدد الساعات")
+                            .then(() => {
+                              message.channel.awaitMessages(res => res.author.id == message.author.id , {
+                                max: 1,
+                                time: 30000,
+                                errors: ['time']
+                              })
+                                .then((collected3) => {
+                                  let content = collected3.first().content;
+                                  message.channel.send(" سوف يتم حذف الروم بعد انتهاء الوقت")
+                                  setTimeout(function() {
+                                    channel.delete()
+                                    message.channel.send(channel.name + " تم حذف روم")
+                                  }, (3600000*parseInt(content)))
+                                }).catch(console.error)
+                            }).catch(console.error)
+                        }
+                      }).catch(console.error);
+                  }).catch(console.error)
+              }).catch(console.error);
+          }).catch(console.error);
+      });
+  }
 });
 
 
