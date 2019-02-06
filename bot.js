@@ -203,7 +203,6 @@ client.on('message', msg => {
 });
 
 client.on('message', msg => {
-var prefix = "$";
   if(!msg.guild) return;
     if (msg.content.startsWith(prefix +'cy')) {
      let args = msg.content.split(" ").slice(1);
