@@ -9,19 +9,23 @@ client.on('guildCreate', guild => {
 	console.log(`Added to a server by: ${guild.owner.user.username} || Server name: ${guild.name} || Users: ${guild.memberCount}`); // ايفنت يقوم بإرسال إلى الكونسل بأنه قد قامت احد السيرفر بدعوة البوت
 });
 
-const google = require('google-it');
+const shorten = require('isgd');
 client.on('message', message => {
- let args = message.content.split(' ').slice(1);
-    if(message.content.startsWith('$google')) {
-    const input = args.join(' ');
-
-google({ query: input, disableConsole: true }).then(results => {
-    return message.channel.send(`\n\n**Title**: ${results[0].title}\n***Link***: ${results[0].link}\nDescription: ${results[0].snippet}`);
-}).catch(error => {
-    if (error) throw error;
+ if (message.content.startsWith('$short')) {
+    let args = message.content.split(" ").slice(1);
+  if (!args[0]) return message.channel.send('**استعمل**: '+ prefix +'short <رابط>')
+  if (!args[1]) {
+    shorten.shorten(args[0], function(res) {
+      if (res.startsWith('Error:')) return message.channel.send('**Usage**: '+ prefix +'short <link>');
+      message.channel.send(`اختصار الرابط:**${res}**`);
+    })
+  } else {
+    shorten.custom(args[0], args[1], function(res) {
+      if (res.startsWith('Error:')) return message.channel.send(`اختصار الرابط:**${res}**`);
+      message.channel.send(`اختصار الرابط:**${res}**`);
+})
+}}
 });
-
-}})
 
 
 
