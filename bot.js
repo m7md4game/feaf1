@@ -9,25 +9,6 @@ client.on('guildCreate', guild => {
 	console.log(`Added to a server by: ${guild.owner.user.username} || Server name: ${guild.name} || Users: ${guild.memberCount}`); // ايفنت يقوم بإرسال إلى الكونسل بأنه قد قامت احد السيرفر بدعوة البوت
 });
 
-const shorten = require('isgd');
-client.on('message', message => {
- if (message.content.startsWith('$short')) {
-    let args = message.content.split(" ").slice(1);
-  if (!args[0]) return message.channel.send('**استعمل**: '+ prefix +'short <رابط>')
-  if (!args[1]) {
-    shorten.shorten(args[0], function(res) {
-      if (res.startsWith('Error:')) return message.channel.send('**Usage**: '+ prefix +'short <link>');
-      message.channel.send(`اختصار الرابط:**${res}**`);
-    })
-  } else {
-    shorten.custom(args[0], args[1], function(res) {
-      if (res.startsWith('Error:')) return message.channel.send(`اختصار الرابط:**${res}**`);
-      message.channel.send(`اختصار الرابط:**${res}**`);
-})
-}}
-});
-
-
 
 client.on("message", message => {
  if (message.content === "$help") {
