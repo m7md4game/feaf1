@@ -16,7 +16,7 @@ client.on('message', message => {
 
     let room = message.content.split(" ").slice(1);
     let findroom = message.guild.channels.find('name', `${room}`)
-    if(message.content.startsWith("$setReport")) {
+    if(message.content.startsWith(prefix + "setReport")) {
         if(!message.channel.guild) return message.reply('**This Command Only For Servers**');
         if(!message.member.hasPermission('MANAGE_GUILD')) return message.channel.send('**Sorry But You Dont Have Permission** `MANAGE_GUILD`' );
 if(!room) return message.channel.send('Please Type The Channel Name')
@@ -31,6 +31,7 @@ message.channel.sendEmbed(embed)
 reportjson[message.guild.id] = {
 channel: room,
 }
+fs.writeFile("./report.json", JSON.stringify(reportjson), (err) => {
 if (err) console.error(err)
 })
 client.on('message', message => {
