@@ -13,7 +13,7 @@ client.on('guildCreate', guild => {
 
 client.on('message',async message => {
   if(message.author.bot) return;
-var prefix = "$"
+var prefix = "$";
 if(message.content.indexOf(prefix) !== 0) return;
 const args = message.content.slice(prefix.length).trim().split(/ +/g);
 const command = args.shift().toLowerCase();
@@ -615,6 +615,7 @@ https://discordapp.com/oauth2/authorize?&client_id=526465331997442048&scope=bot&
 『$add-r / اضافه رتبه』
 『$delet / مسح روم』
 『$ct /انشاء روم كتابي』
+『$cy / انشاء مستند』
 『$cv /انشاء روم صوتي』
 『$bc /برودكاست』
 **
