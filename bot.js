@@ -9,30 +9,7 @@ client.on('guildCreate', guild => {
 	console.log(`Added to a server by: ${guild.owner.user.username} || Server name: ${guild.name} || Users: ${guild.memberCount}`); // ايفنت يقوم بإرسال إلى الكونسل بأنه قد قامت احد السيرفر بدعوة البوت
 });
 
-if(cmd ==="$report"){
-        let wUser = message.guild.member (message.mentions.users.first())  message.guild.members.get(args[0]);
-          if(!wUser) return message.reply("يجب ان تمنشن شخص اول")
-    let reason = args.join(" ").slice(22);
 
-message.channel.send("تم ارسال  الشكوى  الى الادارة العليا  ")
-
-   let embed = new Discord.RichEmbed()
-          .setColor('RANDOM')
-  .addField("reoprt user",${wUser} with id ${wUser.id})
-  .addField("reoprt by",${message.author} with id ${message.author.id})
-  .addField("channel",message.channel)
-  .addField("TIME",message.createdAt)
-  .addField("Reson",reason)
-
-
-  let warnchannel = message.guild.channels.find(name,"bot")
-  if(!warnchannel) return message.reply("لا يجود الشات ")
-
-  message.delete().catch(O_o=>{})
-  warnchannel.send(embed);
-
-
-  }
 
 client.on('message',async message => {
   if(message.author.bot) return;
