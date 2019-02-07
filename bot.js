@@ -9,246 +9,57 @@ client.on('guildCreate', guild => {
 	console.log(`Added to a server by: ${guild.owner.user.username} || Server name: ${guild.name} || Users: ${guild.memberCount}`); // ايفنت يقوم بإرسال إلى الكونسل بأنه قد قامت احد السيرفر بدعوة البوت
 });
 
-
-
-
-//Perfect Say Code
-var prefix = "$";
-client.on('message', async message => {
-    let messageArray = message.content.split(" ");
-   if(message.content.startsWith("$setSay")) {
-    let filter = m => m.author.id === message.author.id;
-    let role;
- 
-    if(!message.member.hasPermission("MANAGE_GUILD")) return message.channel.send('You don\'t have permission').then(msg => {
-       msg.delete(4500);
-       message.delete(4500);
-    });
-   
-    message.channel.send(':pencil: **| Please Type The Role Required To Type The Say Command ... :pencil2: **').then(msg => {
- 
-        message.channel.awaitMessages(filter, {
-          max: 1,
-          time: 90000,
-          errors: ['time']
-        })
-    
-        .then(collected => {
-            collected.first().delete();
-            role = collected.first().content;
-            let replymsg;
-            msg.edit(':scroll: **| Now Please Type The Answer If He Dont Have The Required Role ... :pencil2: **').then(msg => {
-     
-                message.channel.awaitMessages(filter, {
-                  max: 1,
-                  time: 90000,
-                  errors: ['time']
-                })
-                .then(collected => {
-                    collected.first().delete();
-                    replymsg = collected.first().content;
-                    msg.edit('✅ **| Successfully Setup !...  **').then(msg => {
-       
-                      message.channel.awaitMessages(filter, {
-                        max: 1,
-                        time: 90000,
-                        errors: ['time']
-                      })
-                    
-      let embed = new Discord.RichEmbed()
-      .setTitle('**Done The Say Code Has Been Setup**')
-      .addField('Say Role:', `${role}`)
-      .addField('Say Role Reply:', `${replymsg}`)
-      .addField('Requested By:', `${message.author}`)
-      .setThumbnail(message.author.avatarURL)
-      .setFooter(`${client.user.username}`)
-      .setColor('RANDOM')
-      say[message.guild.id] = {
-      onoff: 'On',
-      sayembed: 'On',
-      reply: replymsg,
-      sayrole: role
-      },
-      message.channel.sendEmbed(embed)
-      fs.writeFile("./say.json", JSON.stringify(say), (err) => {
-      if (err) console.error(err)
-    })
-      })
-    })
-   })
- })
-})
-   }})
-   
-   client.on('message', message => {
-    let args = message.content.split(" ").slice(1);
-if(message.content.startsWith('$embedsay')) {
-    if(say[message.guild.id].onoff === 'Off') return;
-    if(say[message.guild.id].sayembed === 'Off') return;
-    let staff = message.guild.member(message.author).roles.find('name' , `${say[message.guild.id].sayrole}`);
-    if(!staff) return message.channel.send(`${say[message.guild.id].replymsg}`)    
-let embed = new Discord.RichEmbed()
-.setDescription(args)
-message.channel.sendEmbed(embed)
-}})
-
-      
 client.on('message', message => {
-  
-  if(message.content.startsWith("$toggleSay")) {
+	var prefix = "$";
+           if (!message.channel.guild) return;
+ 
+    let room = message.content.split(" ").slice(1);
+    let findroom = message.guild.channels.find('name', `${room}`)
+    if(message.content.startsWith(prefix + "setSug")) {
+        if(!message.channel.guild) return message.reply('**This Command Only For Servers**');
+        if(!message.member.hasPermission('MANAGE_GUILD')) return message.channel.send('**Sorry But You Dont Have Permission** `MANAGE_GUILD`' );
+if(!room) return message.channel.send('Please Type The Channel Name')
+if(!findroom) return message.channel.send('Cant Find This Channel')
+let embed = new Discord.RichEmbed()
+.setTitle('**Done The Suggest Code Has Been Setup**')
+.addField('Channel:', `${room}`)
+.addField('Requested By:', `${message.author}`)
+.setThumbnail(message.author.avatarURL)
+.setFooter(`${client.user.username}`)
+message.channel.sendEmbed(embed)
+sug[message.guild.id] = {
+channel: room,
+}
+fs.writeFile("./sug.json", JSON.stringify(sug), (err) => {
+if (err) console.error(err)
+})
+   client.on('message', message => {
+ 
+ 
+    if(message.content.startsWith(`${prefix}suggest`)) {
       if(!message.channel.guild) return message.reply('**This Command Only For Servers**');
-      if(!message.member.hasPermission('MANAGE_GUILD')) return message.channel.send('**Sorry But You Dont Have Permission** `MANAGE_GUILD`' );
-      if(!say[message.guild.id]) say[message.guild.id] = {
-        onoff: 'Off'
-      }
-        if(say[message.guild.id].onoff === 'Off') return [message.channel.send(`**The Say Is __𝐎𝐍__ !**`), say[message.guild.id].onoff = 'On']
-        if(say[message.guild.id].onoff === 'On') return [message.channel.send(`**The Say Is __𝐎𝐅𝐅__ !**`), say[message.guild.id].onoff = 'Off']
-        fs.writeFile("./say.json", JSON.stringify(say), (err) => {
-          if (err) console.error(err)
-          .catch(err => {
+      let suggest = message.content.split(" ").slice(1);
+      if(!suggest) return message.reply(`**Please Type The Suggest**`)
+    let findchannel = (message.guild.channels.find('name', `${sug[message.guild.id].channel}`))
+    if(!findchannel) return message.channel.send(`Error 404: The Suggest Channel Cant Find Or Not Set To Set The Suggest Channel Type: ${prefix}setSug`)
+    message.channel.send(`Done Your Suggest Will Be Seen By The Staffs`)
+    let sugembed = new Discord.RichEmbed()
+    .setTitle('New Suggest !')
+    .addField('Suggest By:', `${message.author}`)
+    .addField('Suggest:', `${suggest}`)
+    .setFooter(client.user.username)
+    findchannel.sendEmbed(sugembed)
+        .then(function (message) {
+          message.react('✅')
+          message.react('❌')
+        })
+        .catch(err => {
+            message.reply(`Error 404: The Suggest Channel Cant Find Or Not Set To Set The Suggest Channel Type: ${prefix}setSug`)
             console.error(err);
         });
-          });
         }
-        
       })
-      
-      client.on('message', message => {
-  
-        if(message.content.startsWith("$toggleEmbed")) {
-            if(!message.channel.guild) return message.reply('**This Command Only For Servers**');
-            if(!message.member.hasPermission('MANAGE_GUILD')) return message.channel.send('**Sorry But You Dont Have Permission** `MANAGE_GUILD`' );
-            if(!say[message.guild.id]) say[message.guild.id] = {
-              embed: 'Off'
-            }
-              if(say[message.guild.id].sayembed === 'Off') return [message.channel.send(`**The Say Embed Is __𝐎𝐍__ !**`), say[message.guild.id].sayembed = 'On']
-              if(say[message.guild.id].sayembed === 'On') return [message.channel.send(`**The Say Embed Is __𝐎𝐅𝐅__ !**`), say[message.guild.id].sayembed = 'Off']
-              fs.writeFile("./say.json", JSON.stringify(say), (err) => {
-                if (err) console.error(err)
-                .catch(err => {
-                  console.error(err);
-              });
-                })
-              }
-              
-            })
-
-
-            client.on('message', message => {
-
-        if (message.author.bot) return;
-      
-        if (!message.content.startsWith(prefix)) return;
-      
-      
-        let command = message.content.split(" ")[0];
-      
-        command = command.slice(prefix.length);
-      
-      
-        let args = message.content.split(" ").slice(1);
-let embed = new Discord.RichEmbed()
-.setTitle(args)
-      
-      
-        if (command === "say") {
-          
-          if(say[message.guild.id].onoff === 'Off') return;
-          let staff = message.guild.member(message.author).roles.find('name' , `${say[message.guild.id].sayrole}`);
-          if(!staff) return message.channel.send(`${say[message.guild.id].replymsg}`)      
-                message.delete()
-                if(!say[message.guild.id].sayembed === 'On') return message.sendEmbed(say)
-                message.channel.sendMessage(args)
-        }})
-      
-client.on('message', message => {
-  if(message.content.startsWith("$infoSay")) {
-let embed = new Discord.RichEmbed()
-.addField('Say Status', `${say[message.guild.id].onoff}`)
-.addField('Say Role:', `${say[message.guild.id].sayrole}`)
-.addField('Say Embed Status:', `${say[message.guild.id].embed}`)
-.addField('Requested By', `${message.author}`)
-.setThumbnail('https://a.top4top.net/p_10555ubbl1.png')
-.setImage(message.author.avatarURL)
-.setFooter(`${client.user.username}`)
-.setColor('RANDOM')
-message.channel.sendEmbed(embed)
-  }})
-
-
-client.on('message', async message => {
-    let messageArray = message.content.split(" ");
-   if(message.content.startsWith("$setReply")) {
-             
-    let filter = m => m.author.id === message.author.id;
-    let thisMessage;
-    let thisFalse;
- 
-    if(!message.member.hasPermission("MANAGE_GUILD")) return message.channel.send('You don\'t have permission').then(msg => {
-       msg.delete(4500);
-       message.delete(4500);
-    });
-   
-    message.channel.send(':pencil: **| من فضلك اكتب الرساله الان... :pencil2: **').then(msg => {
- 
-        message.channel.awaitMessages(filter, {
-          max: 1,
-          time: 90000,
-          errors: ['time']
-        })
-        .then(collected => {
-            collected.first().delete();
-            thisMessage = collected.first().content;
-            let boi;
-            msg.edit(':scroll: **| من فضلك اكتب الرد الان... :pencil2: **').then(msg => {
-     
-                message.channel.awaitMessages(filter, {
-                  max: 1,
-                  time: 90000,
-                  errors: ['time']
-                })
-                .then(collected => {
-                    collected.first().delete();
-                    boi = collected.first().content;
-                    msg.edit('✅ **| تم الاعداد بنجاح...  **').then(msg => {
-       
-                      message.channel.awaitMessages(filter, {
-                        max: 1,
-                        time: 90000,
-                        errors: ['time']
-                      })
-                      let embed = new Discord.RichEmbed()
-                      .setTitle('**Done The Autoreply Code Has Been Setup**')
-                      .addField('Message:', `${thisMessage}`)
-                      .addField('Reply:', `${boi}`)
-                      .setThumbnail(message.author.avatarURL)
-                      .setFooter(`${client.user.username}`)
-                     message.channel.sendEmbed(embed)
-    reply[message.guild.id] = {
-        msg: thisMessage,
-        reply: boi,
-        onoff: 'On'
-    }
-    fs.writeFile("./replys.json", JSON.stringify(reply), (err) => {
-    if (err) console.error(err)
-  })
-   }
-            )
-        })
-    })
-})
-    })
-}})            
-client.on('message', async message => {
-            if(!reply[message.guild.id]) reply[message.guild.id] = {
-          onoff: 'Off'
-        }
-          if(reply[message.guild.id].onoff === 'Off') return;
-   if(message.content === reply[message.guild.id].msg) {
-       message.channel.send(reply[message.guild.id].reply)
-   }}
-)
-
+    }})
 
 
 client.on('message', message => {
