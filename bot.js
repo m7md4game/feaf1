@@ -10,7 +10,6 @@ client.on('guildCreate', guild => {
 });
 
 
-let rab6 = JSON.parse(fs.readFileSync('./rab6.json' , 'utf8'));
 client.on('message', message => {
 	var prefix = "$";
     if(message.content.startsWith(prefix + "toggleLink")) {
@@ -33,7 +32,7 @@ client.on('message', message => {
 const coolDown = new Set();
 client.on('message', message => {
  
-      if (message.content.startsWith("رابط")) {
+      if (message.content.startsWith("$رابط")) {
                   if(!message.channel.guild) return message.reply('**This Command Only For Servers**');
                       if(!rab6[message.guild.id]) rab6[message.guild.id] = {
         onoff: 'Off'
