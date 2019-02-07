@@ -9,6 +9,36 @@ client.on('guildCreate', guild => {
 	console.log(`Added to a server by: ${guild.owner.user.username} || Server name: ${guild.name} || Users: ${guild.memberCount}`); // ايفنت يقوم بإرسال إلى الكونسل بأنه قد قامت احد السيرفر بدعوة البوت
 });
 
+client.on('message', msg => {
+var prefix = "+";
+  if(!msg.guild) return;
+    if (msg.content.startsWith(prefix +'cy')) {
+     let args = msg.content.split(" ").slice(1);
+    if(!msg.channel.guild) return msg.channel.send('**هذا الأمر فقط للسيرفرات**').then(m => m.delete(5000));
+let ra3d = new Discord.RichEmbed()
+.setThumbnail(msg.author.avatarURL)
+.setDescription(`ان كنت تريد انشاء للمستند اظغط علي الايموجي📝`)                                                                                                                                                                       
+.setFooter('لديك دقيقه للاختيار')
+msg.channel.send(ra3d).then(message => {
+    
+    
+ message.react('📝').then(r=>{
+                              
+    
+ let Category = (reaction, user) => reaction.emoji.name === '📝' && user.id === msg.author.id;
+
+ let cy  = message.createReactionCollector(Category, { time: 60000 });
+
+cy.on("collect", r => {
+msg.guild.createChannel(args.join(' '), 'category');
+    msg.channel.send(`☑ تم انشاء المستند بنجاح : \`${args}\``)
+    msg.delete();
+})
+})
+})
+}
+});
+
 
 client.on("message", message => {
  if (message.content === "$help") {
