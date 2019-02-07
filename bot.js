@@ -9,8 +9,7 @@ client.on('guildCreate', guild => {
 	console.log(`Added to a server by: ${guild.owner.user.username} || Server name: ${guild.name} || Users: ${guild.memberCount}`); // ايفنت يقوم بإرسال إلى الكونسل بأنه قد قامت احد السيرفر بدعوة البوت
 });
 
-var Discord = require('discord.js');
-var client = new Discord.Client();
+
 var prefix = "$" ; // البرفكس
  
 var stopReacord = true;
