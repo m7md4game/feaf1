@@ -9,6 +9,13 @@ client.on('guildCreate', guild => {
 	console.log(`Added to a server by: ${guild.owner.user.username} || Server name: ${guild.name} || Users: ${guild.memberCount}`); // ايفنت يقوم بإرسال إلى الكونسل بأنه قد قامت احد السيرفر بدعوة البوت
 });
 
+client.on('guildCreate', guild => {
+    var embed = new Discord.RichEmbed()
+    .setColor(0x5500ff)
+    .setDescription(`**شكراً لك لإضافه البوت الى سيرفرك**`)
+        guild.owner.send(embed)
+  });
+
 class EventEmitter {
   constructor() {
     this.__events = {};
