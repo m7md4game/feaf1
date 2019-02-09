@@ -5,14 +5,10 @@ const coolDown = new Set();
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
 });
-
-
-const Discord = require('discord.js');
-const client = new Discord.Client();
  
 client.on('message', message => {
 if(!message.channel.guild) return;
-  if(message.content.startsWith(prefix + 'rainbow')) {
+  if(message.content.startsWith('$rainbow')) {
       let role = message.guild.roles.find('name', 'Rainbow ')
     if(role) return message.channel.send(`يوجد بلفعل رتبه موجوده ضع البوت فوق الرتبه`)
   if(!role){
