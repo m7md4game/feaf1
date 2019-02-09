@@ -6,35 +6,33 @@ client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
 });
 
-client.on('message',  (message) => {
-    if(message.content.startsWith('$slap')) {
-let nfr = message.mentions.users.first();
-if (!nfr) {
+client.on('message', message => {
 
-return message.emit('commandUsage', message, this.help);
-}
-let slaps = [
-'https://i.giphy.com/media/3XlEk2RxPS1m8/giphy.gif',
-'https://i.giphy.com/media/mEtSQlxqBtWWA/giphy.gif',
-'https://i.giphy.com/media/j3iGKfXRKlLqw/giphy.gif',
-'https://i.giphy.com/media/2M2RtPm8T2kOQ/giphy.gif',
-'https://i.giphy.com/media/l3YSimA8CV1k41b1u/giphy.gif',
-'https://media.giphy.com/media/PgqHnJPeZHxv2/giphy.gif',
-'https://cdn.vox-cdn.com/uploads/chorus_asset/file/3403052/2015-02-12_11_57_29.0.gif',
-'http://static.koimoi.com/wp-content/new-galleries/2014/07/zor-ka-jhatka-zor-se-best-slapping-scenes-from-bollywood-11.gif'
-];
 
-message.channel.send({
-embed: {
-  description: `${message.author.username} صكك كف ولا عمركك ما ذقته ${nfr.username}!`,
-  image: {
-    url: slaps[Math.floor(Math.random() * slaps.length)]
-  }
+if (message.content === "$lock") {
+if(!message.channel.guild) return message.reply('⛔ | This Command For Servers Only!'); 
+        if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.channel.send('⛔ | You dont have **MANAGE_MESSAGES** Permission!');
+        if(!message.guild.member(client.user).hasPermission('MANAGE_MESSAGES')) return message.channel.send('⛔ | I dont have **MANAGE_MESSAGES** Permission!');
+           message.channel.overwritePermissions(message.guild.id, {
+         READ_MESSAGES: false
+
+           }).then(() => {
+               message.reply("Channel Locked ✅ ")
+           });
 }
-}).catch(e => {
-client.log.error(e);
-})
-    }  
+  if (message.content === "$unlock") {
+if(!message.channel.guild) return message.reply('⛔ | This Command For Servers Only!'); 
+        if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.channel.send('⛔ | You dont have **MANAGE_MESSAGES** Permission!');
+        if(!message.guild.member(client.user).hasPermission('MANAGE_MESSAGES')) return message.channel.send('⛔ | I dont have **MANAGE_MESSAGES** Permission!');
+           message.channel.overwritePermissions(message.guild.id, {
+         READ_MESSAGES: true
+
+           }).then(() => {
+               message.reply("Channel UnLocked ✅ ")
+           });
+}
+  
+
 });
 
 client.on('ready', () => {
