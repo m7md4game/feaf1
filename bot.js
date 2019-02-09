@@ -28,6 +28,28 @@ client.on('message',async message => {
   }
   });
 
+client.on('message', msg => {
+  if(msg.content === '$hide') {
+    msg.guild.channels.forEach(c => {
+      c.overwritePermissions(msg.guild.id, {
+        SEND_MESSAGES: false,
+        READ_MESSAGES: false
+    });
+});
+    msg.channel.send('**تم اخفاء جميع الرومات**')
+  }
+});
+client.on('message', msg => {
+  if(msg.content === '$show') {
+    msg.guild.channels.forEach(c => {
+      c.overwritePermissions(msg.guild.id, {
+        SEND_MESSAGES: true,
+        READ_MESSAGES: true
+    });
+});
+    msg.channel.send('**تم اظهار جميع الرومات**')
+  }
+});
 
 client.on('guildCreate', guild => {
 	console.log(`Added to a server by: ${guild.owner.user.username} || Server name: ${guild.name} || Users: ${guild.memberCount}`); // ايفنت يقوم بإرسال إلى الكونسل بأنه قد قامت احد السيرفر بدعوة البوت
