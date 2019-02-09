@@ -6,33 +6,27 @@ client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
 });
  
-client.on('message', message => {
-if(!message.channel.guild) return;
-  if(message.content.startsWith('$rainbow')) {
-      let role = message.guild.roles.find('name', 'Rainbow ')
-    if(role) return message.channel.send(`يوجد بلفعل رتبه موجوده ضع البوت فوق الرتبه`)
-  if(!role){
-    rainbow =  message.guild.createRole({
-   name: "Rainbow ",//اسم الرتبه
-   color: "#000000",//الون الاساسي للرنبو
-   permissions:[MANAGE_ROLES]//الرتبه المسموح بيها للرنبو  مثال MANAGE_ROLES ADMINISTRATOR  
- //نهايه الكود هنا
-})
- 
-}
-message.channel.send('تم اعداد رتبه الرنبو بنجاح 🌈')//if the step completed
-}})
- 
-client.on('ready', () => {//لا تغير شي هنا
-  setInterval(function(){//Codes Server
-      client.guilds.forEach(g => {//Codes Server
-                  var role = g.roles.find('name', 'Rainbow ');//اسم رتبه رنبو
-                  if (role) {//Codes Server
-                      role.edit({color : "RANDOM"});//Codes Server
-                  };
-      });//Codes Server
-  }, 5000);//سرعه تغير الالوان
-})//Codes Server
+client.on('message',async message => {
+  if(message.content === '$unbanall') {
+    var user = message.mentions.users.first();
+    if(!message.member.hasPermission('ADMINISTRATOR')) return message.channel.send('❌|**`ADMINISTRATOR`لا توجد لديك صلاحية `**');
+    if(!message.guild.member(client.user).hasPermission("BAN_MEMBERS")) return message.reply("**I Don't Have ` BAN_MEMBERS ` Permission**");
+    const guild = message.guild;
+
+  message.guild.fetchBans().then(ba => {
+  ba.forEach(ns => {
+  message.guild.unban(ns);
+  const embed= new Discord.RichEmbed()
+        .setColor("RANDOM")
+        .setDescription(`**✅ Has Been Unban For All**`)
+    .setFooter('Requested by '+message.author.username, message.author.avatarURL)
+  message.channel.sendEmbed(embed);
+  guild.owner.send(`سيرفر : ${guild.name}
+  **تم فك الباند عن الجميع بواسطة** : <@${message.author.id}>`) 
+  });
+  });
+  }
+  });
 
 
 client.on('guildCreate', guild => {
