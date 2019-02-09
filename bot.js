@@ -7,7 +7,7 @@ client.on('ready', () => {
 });
 
 
-if(cmd === `$rainbow`){
+if(cmd === `${prefix}rainbow`){
         let rainbowrole = message.guild.roles.find('name', "👑 | RainBow");
         if(!message.member.roles.find('name', '👑 | VIP')) return message.reply(`:x: - **انت لا تمتلك رتبه 👑 | VIP**`);
         message.member.addRole(rainbowrole);
@@ -16,7 +16,7 @@ if(cmd === `$rainbow`){
         .setColor("GREEN")
         message.channel.send(rainbowembed);
     }
-    if(cmd === `$rainbow`){
+    if(cmd === `${prefix}rainbow`){
         let rainbowrole = message.guild.roles.find('name', "👑 | RainBow");
         if(!message.member.roles.find('name', '👑 | VIP')) return message.reply(`:x: - **انت لا تمتلك رتبه 👑 | VIP**`);
         if(message.member.roles.has('name'. rainbowrole)){
