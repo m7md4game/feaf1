@@ -6,7 +6,7 @@ client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
 });
 
-
+const devs
 client.on('message', message => {
 if(message.content === "$restart") {
       if (!devs.includes(message.author.id)) return;
