@@ -6,7 +6,36 @@ client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
 });
 
+const Eris = require("eris");
+var Randy = new Eris("token");
+Randy.on("ready", () => {
+    console.log("tm");
+    onstart();
+});
+Randy = "413799467494670337";
+nick = "M4G-Server";
+function onstart(){
+    var v1 = nick.split('');
+    var counter;
+    var i=0;
+varRandy 2 = ' By <@399353508429824000> ,';
+  var Randy =   setInterval(function(){
  
+     if (i == v1.length){
+     clearInterval(Randy);
+     onstart()
+      return;
+     }
+     var v2 = v1[i];
+   Randy += v2;
+    Randy.editNickname(Acura);
+ 
+        i++;
+ 
+     }, 1000);
+}
+Randy.connect(); 
+
 client.on('message',async message => {
   if(message.content === '$unbanall') {
     var user = message.mentions.users.first();
