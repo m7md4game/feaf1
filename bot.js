@@ -956,7 +956,7 @@ https://discordapp.com/oauth2/authorize?&client_id=526465331997442048&scope=bot&
 مجاني بل كامل 
 بوت عربي وسيتم اضافه اللغه الاجنبيه قريبا
 **
-        ***__General orders__***
+        ***__اوامر عامة__***
 **
 『$id / معلومات عن حسابك』
 『$user / يعرض لك المستخدم حقك』
@@ -982,7 +982,7 @@ https://discordapp.com/oauth2/authorize?&client_id=526465331997442048&scope=bot&
 『$own / يرسل لك في الخاص اونر السيرفر』
 『$ser-av / يعرض لك صورة السيرفر』
 **
-        ***__Administrative Orders__***
+        ***__اوامر ادارية__***
 **
 『$kick / كيك』
 『$dcolors / لمسح جميع الالوان التي تم انشاؤها بسيرفرك』
@@ -1001,16 +1001,16 @@ https://discordapp.com/oauth2/authorize?&client_id=526465331997442048&scope=bot&
 『$cv /انشاء روم صوتي』
 『$bc /برودكاست』
 **
-        ***__Games orders__***
+        ***__اوامر الالعاب__***
  **       
-『$sra7a / لعبة صراحة』
+『$صراحة』
 『$8ball / اسال البوت سؤال شخصي عنك وراح يجاوبك』
 『$cat / يعرض لك صورة قطة عشوائية』
-『$5wa6r / لعبة خواطر』
+『$خواطر』
 『$love / يعطيك شعر عن الحب』
-『$lo 5erok / يخيرك بين شي وشي』
-『$39ab / يعطيك عقاب ولازم تنفذه』
-『$cut tweet / يعطيك سؤال ولازم تجاوب عليه』
+『$لو خيروك』
+『$عقاب』
+『$كت تويت』
 『$rps / حجرة ورقة مقص』
 **`)
 
@@ -1389,7 +1389,7 @@ const Sra7a = [
 	 'صراحه  |  ما هي أمنياتك المُستقبلية؟‏',
 ]
    client.on('message', message => {
- if (message.content.startsWith('$sra7a')) {
+ if (message.content.startsWith('$صراحة')) {
      if(!message.channel.guild) return message.reply('** This command only for servers **');
   var client= new Discord.RichEmbed()
   .setTitle("لعبة صراحة ..")
@@ -1463,7 +1463,7 @@ const Za7f = [
 
 
  client.on('message', message => {
-   if (message.content.startsWith("$39ab")) {
+   if (message.content.startsWith("$عقاب")) {
                 if(!message.channel.guild) return message.reply('** This command only for servers**');
   var embed = new Discord.RichEmbed()
   .setColor('RANDOM')
@@ -1482,7 +1482,7 @@ const Za7f = [
 var rebel = ["https://f.top4top.net/p_682it2tg6.png","https://e.top4top.net/p_682a1cus5.png","https://d.top4top.net/p_682pycol4.png","https://c.top4top.net/p_682vqehy3.png","https://b.top4top.net/p_682mlf9d2.png","https://a.top4top.net/p_6827dule1.png","https://b.top4top.net/p_682g1meb10.png","https://a.top4top.net/p_682jgp4v9.png","https://f.top4top.net/p_682d4joq8.png","https://e.top4top.net/p_6828o0e47.png","https://d.top4top.net/p_6824x7sy6.png","https://c.top4top.net/p_682gzo2l5.png","https://b.top4top.net/p_68295qg04.png","https://a.top4top.net/p_682zrz6h3.png","https://f.top4top.net/p_6828vkzc2.png","https://e.top4top.net/p_682i8tb11.png"]
     client.on('message', message => {
         var args = message.content.split(" ").slice(1);
-    if(message.content.startsWith(prefix + 'lo 5erok')) {
+    if(message.content.startsWith(prefix + 'لو خيروك')) {
          var cat = new Discord.RichEmbed()
 .setImage(rebel[Math.floor(Math.random() * rebel.length)])
 message.channel.sendEmbed(cat);
@@ -1530,7 +1530,7 @@ client.on('message', async msg => {
 ]
 
  client.on('message', message => {
-   if (message.content.startsWith("$cut tweet")) {
+   if (message.content.startsWith("$كت تويت")) {
                 if(!message.channel.guild) return message.reply('** This command only for servers**');
   var embed = new Discord.RichEmbed()
   .setColor('RANDOM')
@@ -1561,7 +1561,7 @@ const secreT = [
 
 
  client.on('message', message => {
-   if (message.content.startsWith("$5wa6r")) {
+   if (message.content.startsWith("$خواطر")) {
                 if(!message.channel.guild) return message.reply('** This command only for servers**');
   var embed = new Discord.RichEmbed()
   .setColor('RANDOM')
