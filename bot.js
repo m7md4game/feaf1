@@ -6,6 +6,37 @@ client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
 });
 
+client.on('message',  (message) => {
+    if(message.content.startsWith(prefix + 'slap')) {
+let nfr = message.mentions.users.first();
+if (!nfr) {
+
+return message.emit('commandUsage', message, this.help);
+}
+let slaps = [
+'https://i.giphy.com/media/3XlEk2RxPS1m8/giphy.gif',
+'https://i.giphy.com/media/mEtSQlxqBtWWA/giphy.gif',
+'https://i.giphy.com/media/j3iGKfXRKlLqw/giphy.gif',
+'https://i.giphy.com/media/2M2RtPm8T2kOQ/giphy.gif',
+'https://i.giphy.com/media/l3YSimA8CV1k41b1u/giphy.gif',
+'https://media.giphy.com/media/PgqHnJPeZHxv2/giphy.gif',
+'https://cdn.vox-cdn.com/uploads/chorus_asset/file/3403052/2015-02-12_11_57_29.0.gif',
+'http://static.koimoi.com/wp-content/new-galleries/2014/07/zor-ka-jhatka-zor-se-best-slapping-scenes-from-bollywood-11.gif'
+];
+
+message.channel.send({
+embed: {
+  description: `${message.author.username} صكك كف ولا عمركك ما ذقته ${nfr.username}!`,
+  image: {
+    url: slaps[Math.floor(Math.random() * slaps.length)]
+  }
+}
+}).catch(e => {
+client.log.error(e);
+})
+    }  
+});
+
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
 });
@@ -1004,6 +1035,7 @@ https://discordapp.com/oauth2/authorize?&client_id=526465331997442048&scope=bot&
         ***__اوامر الالعاب__***
  **       
 『$صراحة』
+『$slap / تعطي اي شخص كف』
 『$8ball / اسال البوت سؤال شخصي عنك وراح يجاوبك』
 『$cat / يعرض لك صورة قطة عشوائية』
 『$خواطر』
