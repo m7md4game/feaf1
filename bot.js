@@ -5,6 +5,20 @@ const coolDown = new Set();
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
 });
+
+
+client.on('message', message => {
+if(message.content === "$restart") {
+      if (!devs.includes(message.author.id)) return;
+          message.channel.send(`⚠️ **الشخص الذي اعاد تشغيل البوت ${message.author.username}**`);
+        console.log(`⚠️ جاري اعادة تشغيل البوت... ⚠️`);
+        client.destroy();
+        child_process.fork(__dirname + "bot.js");
+        console.log(`تم اعادة تشغيل البوت`);
+    }
+ 
+  });
+
  
 client.on('message',async message => {
   if(message.content === '$unbanall') {
