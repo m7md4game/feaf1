@@ -1,14 +1,13 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
 const coolDown = new Set(); 
-const prefix = "$";
 
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
 });
 
 
-if(cmd === `${prefix}rainbow`){
+if(cmd === `$rainbow`){
         let rainbowrole = message.guild.roles.find('name', "👑 | RainBow");
         if(!message.member.roles.find('name', '👑 | VIP')) return message.reply(`:x: - **انت لا تمتلك رتبه 👑 | VIP**`);
         message.member.addRole(rainbowrole);
@@ -17,7 +16,7 @@ if(cmd === `${prefix}rainbow`){
         .setColor("GREEN")
         message.channel.send(rainbowembed);
     }
-    if(cmd === `${prefix}rainbow`){
+    if(cmd === `$rainbow`){
         let rainbowrole = message.guild.roles.find('name', "👑 | RainBow");
         if(!message.member.roles.find('name', '👑 | VIP')) return message.reply(`:x: - **انت لا تمتلك رتبه 👑 | VIP**`);
         if(message.member.roles.has('name'. rainbowrole)){
