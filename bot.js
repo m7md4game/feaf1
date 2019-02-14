@@ -35,6 +35,7 @@ if(!message.channel.guild) return message.reply('⛔ | This Command For Servers 
 
 });
 
+var prefix = "$";
  client.on('message', message => {
 
  var ms = require('ms')
@@ -57,7 +58,7 @@ if(!message.channel.guild) return message.reply('⛔ | This Command For Servers 
 
 .setImage("https://d.top4top.net/p_10880lo1r1.png")
 
- if (command == "$ban") {
+ if (command == "ban") {
 
  if(!message.channel.guild) return message.reply('** This command only for servers**');
          
@@ -123,7 +124,7 @@ if(!message.channel.guild) return message.reply('⛔ | This Command For Servers 
 
   });
 
-
+var prefix = "$";
 client.on('message', message => {
 
   var ms = require('ms')
@@ -149,7 +150,7 @@ client.on('message', message => {
  
  .setImage("https://c.top4top.net/p_108825enp1.png")
  
-  if (command == "$mute") {
+  if (command == "mute") {
     
   if(!muteRole) return message.guild.createRole({ name: "Muted", permissions: [] });
 
