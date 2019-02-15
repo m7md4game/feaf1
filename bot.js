@@ -2520,4 +2520,4 @@ message.channel.send('**تم الارسال في الخاص**');
 
 
 
-client.token(process.env.BOT_TOKEN);
+client.login(process.env.BOT_TOKEN);
