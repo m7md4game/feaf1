@@ -17,9 +17,8 @@ from <@${inviter.id}>. Invite was used ${invite.uses} times since its creation.`
   });
 })
 
-var prefix = "$";
 client.on('message',  (message) => {
-    if(message.content.startsWith(prefix + 'slap')) {
+    if(message.content.startsWith('$slap')) {
 let nfr = message.mentions.users.first();
 if (!nfr) {
 
