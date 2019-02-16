@@ -6,25 +6,15 @@ client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
 });
 
-
-client.on("message", message => {
-    if(message.content.startsWith("$verify")) {
-      let num = Math.floor((Math.random() * 4783) + 10);
-    
-      message.channel.send(`يرجى كتابة الرقم التالي: **${num}**`).then(m => {
-        message.channel.awaitMessages(res => res.content == `${num}`, {
-          max: 1,
-          time: 60000,
-          errors: ['time'],
-        }).then(collected => {
-          message.delete();
-          m.delete();
-          message.member.addRole(message.guild.roles.find(c => c.name == "Verified"));
-        }).catch(() => {
-          m.edit(`You took to long to type the number.\nRe-type the command again if you want to verify yourself.`).then(m2 => m.delete(15000));
-});
-})
-}
+client.on('guildMemberAdd', member => { //LAST CODES -HONRAR-
+  member.guild.fetchInvites().then(guildInvites => {
+    const ei = invites[member.guild.id];
+    const invite = guildInvites.find(i => ei.get(i.code).uses < i.uses);
+    const inviter = client.users.get(invite.inviter.id);
+    const stewart = member.guild.channels.find("name", "welcome");
+     stewart.send(`<@${member.user.id}> تمت الدعوه من <@${inviter.id}>`);
+from <@${inviter.id}>. Invite was used ${invite.uses} times since its creation.`);
+  });
 })
 
 client.on('message', message => {
