@@ -6,32 +6,9 @@ client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
 });
 
-client.on('guildMemberAdd', member => { //LAST CODES -HONRAR-
-  member.guild.fetchInvites().then(guildInvites => {
-    const ei = invites[member.guild.id];
-    const invite = guildInvites.find(i => ei.get(i.code).uses < i.uses);
-    const inviter = client.users.get(invite.inviter.id);
-    const stewart = member.guild.channels.find("name", "welcome");
-     stewart.send(`<@${member.user.id}> تمت الدعوه من <@${inviter.id}>`);
-from <@${inviter.id}>. Invite was used ${invite.uses} times since its creation.`);
-  });
-})
-
-var prefix = "$";
-client.on("message", message => {
-       if (!message.content.startsWith(prefix)) return;
-
-    if (message.content.startsWith(prefix + `security`)) {
-        let args = message.content.split(' ').slice(1);
-        
-if (1==args) // حط بدال الرقم 1 اي كلمة سر تبيها
-    message.channel.send('accses sucsses')
-    message.member.addRole(message.guild.roles.find(c => c.name == "M4G | Bots"));  
-    if (1!=args)
-      message.reply('Nope')
 
 
-}});
+
 
 client.on('message', message => {
     var prefix = "$";
