@@ -6,9 +6,9 @@ client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
 });
 
-var prefix = "$";
+
 client.on("message", message => {
-    if(message.content.startsWith(prefix + "verify")) {
+    if(message.content.startsWith("$verify")) {
       let num = Math.floor((Math.random() * 4783) + 10);
     
       message.channel.send(`يرجى كتابة الرقم التالي: **${num}**`).then(m => {
