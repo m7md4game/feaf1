@@ -2,6 +2,9 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 const coolDown = new Set(); 
 
+client.on('ready', () => {
+  console.log(`Logged in as ${client.user.tag}!`);
+});
 
 client.on('guildMemberAdd', member => { //LAST CODES -HONRAR-
   member.guild.fetchInvites().then(guildInvites => {
