@@ -216,7 +216,7 @@ client.on('message', message => {
   if(!message.content.toLowerCase().startsWith(prefix)) return;
   if(command == "sugg") {
     if(!args.join(" ")) return message.channel.send(`**يرجي كتابة الاقتراح **`);
-    let channel = message.guild.channels.find(c => c.name == "suggestions");
+    let channel = message.guild.channels.find(c => c.name == "الاقتراحات");
     let embed = new Discord.RichEmbed()
     .setAuthor(message.author.username, message.author.displayAvatarURL)
     .setTitle(``)
