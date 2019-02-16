@@ -208,6 +208,28 @@ client.on('message', message => {
  
 });
 
+var prefix = "$";
+client.on('message', message => {
+  let command = message.content.split(" ")[0].slice(prefix.length);
+  let args = message.content.split(" ").slice(1);
+ 
+  if(!message.content.toLowerCase().startsWith(prefix)) return;
+  if(command == "sugg") {
+    if(!args.join(" ")) return message.channel.send(`**يرجي كتابة الاقتراح **`);
+    let channel = message.guild.channels.find(c => c.name == "suggestions");
+    let embed = new Discord.RichEmbed()
+    .setAuthor(message.author.username, message.author.displayAvatarURL)
+    .setTitle(``)
+    .setFooter(`Select a reaction below to vote on suggestion`)
+    .setDescription(args.join(" "));
+    channel.send(embed).then(msg => {
+      msg.react("✅").then(() => msg.react("❌"));
+      message.delete()
+      message.channel.send(`**يرجي كتابة اقتراح لكي يتم ارساله الي روم الاقتراحات ❎ **`);
+    });
+  }
+});
+
 client.on("message", message => {
     if (message.content.match(/([A-Z0-9]|-|_){24}\.([A-Z0-9]|-|_){6}\.([A-Z0-9]|-|_){27}|mfa\.([A-Z0-9]|-|_){84}/gi)) {
         if(!message.guild.members.get(client.user.id).hasPermission('MANAGE_MESSAGES')) return message.channel.send('**I need Permission \`MANAGE_MESSAGE\`To delete Tokens**')
@@ -296,7 +318,6 @@ https://discordapp.com/oauth2/authorize?&client_id=526465331997442048&scope=bot&
         ***__اوامر الالعاب__***
  **       
 『$صراحة』
-『$slap / تعطي اي شخص كف』
 『$8ball / اسال البوت سؤال شخصي عنك وراح يجاوبك』
 『$cat / يعرض لك صورة قطة عشوائية』
 『$خواطر』
