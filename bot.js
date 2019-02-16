@@ -15,7 +15,7 @@ client.on("message", message => {
         
 if (1==args) // حط بدال الرقم 1 اي كلمة سر تبيها
     message.channel.send('accses sucsses')
-    message.member.addRole(message.guild.roles.find(c => c.name == "T | Bots"));  
+    message.member.addRole(message.guild.roles.find(c => c.name == "M4G | Bots"));  
     if (1!=args)
       message.reply('Nope')
 
