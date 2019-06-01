@@ -6,14 +6,14 @@ client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
 });
 
-
+var prefix = "$"
 client.on('message',async message => {
   var room;
   var title;
   var duration;
   var gMembers;
   var filter = m => m.author.id === message.author.id;
-  if(message.content.startsWith("$giveaway")) {
+  if(message.content.startsWith(prefix + "giveaway")) {
      //return message.channel.send(':heavy_multiplication_x:| **هذا الامر معطل حاليا.. ``حاول في وقت لاحق``**');
     if(!message.guild.member(message.author).hasPermission('MANAGE_GUILD')) return message.channel.send(':heavy_multiplication_x:| **يجب أن يكون لديك خاصية التعديل على السيرفر**');
     message.channel.send(`:eight_pointed_black_star:| **منشن الروم الذي تريد به القيف اواي**`).then(msgg => {
@@ -77,6 +77,7 @@ client.on('message',async message => {
     });
   }
 });
+ 
  
 
 
