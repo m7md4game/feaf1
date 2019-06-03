@@ -317,6 +317,7 @@ https://discordapp.com/oauth2/authorize?&client_id=526465331997442048&scope=bot&
 『$love / يعطيك شعر عن الحب』
 『$لو خيروك』
 『$عقاب』
+『$نكت』
 『$كت تويت』
 『$rps / حجرة ورقة مقص』
 **`)
