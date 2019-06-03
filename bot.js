@@ -1774,7 +1774,7 @@ const nkt = [
 
    .setThumbnail(message.author.avatarURL) 
  .addField('نكت مضحكة' ,
-  `${secreT[Math.floor(Math.random() * nkt.length)]}`)
+  `${nkt[Math.floor(Math.random() * nkt.length)]}`)
   message.channel.sendEmbed(embed);
   console.log('[id] Send By: ' + message.author.username)
     }
