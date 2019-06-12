@@ -294,8 +294,6 @@ https://discordapp.com/oauth2/authorize?&client_id=526465331997442048&scope=bot&
 『$ban / بان』
 『$mute /ميوت』
 『$unmute /فك الميوت』
-『$mutechannel /قفل الشات』
-『$unmutechannel /فتح الشات』
 『$add-r / اضافه رتبه』
 『$delet / مسح روم』
 『$ct / انشاء روم كتابي』
@@ -1498,84 +1496,22 @@ const fs = require('fs');
 var user = {};
 var warn = {};
 
-client.on('message', function(message) {
 
-    	 if (!message.channel.guild) return;
-let muteRole1 = message.guild.roles.find("name", "Muted");
-     if (!muteRole1) return;
+client.on('message' , message => {
 
-  if (message.author.id == client.user.id) return;
-  if(JSON.stringify(user).indexOf(message.author.id) == -1) {
-    user[message.author.id] = message.createdTimestamp;
-    return;
-  } else {
-    if (Date.now() - user[message.author.id] < 695){
-              message.author.delete
-
-      if (JSON.stringify(warn).indexOf(message.author.id) == -1) {
-        warn[message.author.id] = 1;
-      } else {
-        warn[message.author.id]++;
-        message.author.delete
-      }
-      if (warn[message.author.id] < 4) {
-        message.author.delete
-
-      }
-      delete user[message.author.id];
-              message.author.delete
-
-    } else {
-      delete user[message.author.id];
-              message.author.delete
-
-    }
-  }
-  if (warn[message.author.id] == 4) {		   
-     if (!message.channel.guild) return;
-             message.author.delete
-
-let muteRole1 = message.guild.roles.find("name", "Muted");
-     if (!muteRole1) return;
-    var guild = message.channel.guild;
-          var currentTime = new Date(),
-                   Year = currentTime.getFullYear(),
-            Month = currentTime.getMonth() + 1,
-            Day = currentTime.getDate(),
-hours = currentTime.getHours() + 3 ,
-            minutes = currentTime.getMinutes()+1,
-            seconds = currentTime.getSeconds();
-
-           if (!message.channel.guild) return;
-     if (!muteRole1) return;
-    var guild = message.channel.guild;
-    message.guild.members.get(message.author.id).addRole(muteRole1);
-    
-     var msg;
-        msg = parseInt();
-      
-      message.channel.fetchMessages({limit: msg}).then(messages => message.channel.bulkDelete(messages)).catch(console.error);
-
-delete warn[message.author.id];
-    delete user[message.author.id];
-	const embed500 = new Discord.RichEmbed()
-     .setTitle(`المرسل ${message.author.username}#${message.author.discriminator} `)
-      .setDescription(":white_check_mark:  | `محاولة السبام`\n\nالاسم:\n"+`${message.author.username}#${message.author.discriminator}`+"\nالعقوبة:\n  MuteChat / ميوت كتابي\n")
-      .setFooter("Anti - Spam")
-      .setColor("c91616")
-    message.channel.send(embed500)
-    	const embed20 = new Discord.RichEmbed()
-      .setTitle(":scales: | تمت معاقبتك")
-      .setDescription(`**:small_blue_diamond:لقد قمت بمخالفة قوانين السيرفر**\n \n:gun: : نوع العقوبه\nMuteChat / ميوت كتابي\n:clock1: وقت وتاريخ العقوبه:\n`+ Year + "/" + Month + "/" + Day +', '+hours +'-' +minutes+'-'+seconds+"\n \n \n`في حال كانت العقوبة بالغلط, تواصل مع الادارة`")
-          .setFooter("Anti - Spam")
-      .setColor("c91616")
-    
-     message.author.send(embed20)
-  
-  }
+    if (message.content === "$invite") {
+        if(!message.channel.guild) return message.reply('**الآمر فقط في السيرفرات**');
+     const embed = new Discord.RichEmbed()
+ .setColor("RANDOM")
+ .setThumbnail(client.user.avatarURL)     
+ .setDescription("Add me" + `
+ **
+رابط البوت | https://discordapp.com/oauth2/authorize?client_id=526465331997442048&scope=bot&permissions=8
+ **
+`);
+  message.author.sendEmbed(embed);
+   }
 });
-
-
 
 
 client.on("message", message => {
@@ -2217,7 +2153,7 @@ client.on('message', msg => {
     if(msg.content.startsWith('$link')) {
     if(msg.channel.type === 'dm') return;
 const user = msg.mentions.users.first();
-if(!user) return msg.channel.send('``' + '**قم بتحديد بوت**' + '``')
+if(!user) return msg.channel.send('``' + **`قم بتحديد بوت`** + '``')
 if(!user.bot) return msg.reply('\`منشن بوت\`');
 msg.channel.send(`**Bot InviteURL : ** https://discordapp.com/oauth2/authorize?client_id=${user.id}&scope=bot&permissions=384064`)
     }
@@ -2516,23 +2452,6 @@ client.on("message", (message) => {
         if (!channel) return message.reply('**لا يوجد روم اخر لحذفه -_-**').catch(console.error);
         channel.delete()
     }
-});
- 
-
-client.on('message' , message => {
-
-    if (message.content === "$invite") {
-        if(!message.channel.guild) return message.reply('**الآمر فقط في السيرفرات**');
-     const embed = new Discord.RichEmbed()
- .setColor("RANDOM")
- .setThumbnail(client.user.avatarURL)     
- .setDescription("Add me" + `
- **
-رابط البوت | https://discordapp.com/oauth2/authorize?client_id=526465331997442048&scope=bot&permissions=8
- **
-`);
-  message.author.sendEmbed(embed);
-   }
 });
 
  var prefix = "$"
