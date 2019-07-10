@@ -2,6 +2,17 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 const coolDown = new Set(); 
 
+client.on('message', message => {
+  if(message.content.startsWith(`<@${client.user.id}>`)) {
+    if(message.author.bot || message.channel.type == "dm") return
+    let mention = new Discord.RichEmbed()
+    .setColor('BLUE')
+    .setDescription(`**Hey There,\nSee my all commands by \`${prefix}help\`**`)
+    message.channel.send(mention)
+  }
+});
+
+
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
 });
