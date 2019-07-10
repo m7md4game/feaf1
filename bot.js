@@ -6,27 +6,26 @@ client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
 });
 
-client.on('message', function(message) { //كود اذا حد بعث رابط  يبلع ميوت 
-    if (!message.member.hasPermissions(['ADMINISTRATOR'])){ 
-            let command = message.content.split(" ")[0]; 
-        if(message.content.includes(https' , 'http')){ 
-        message.reply (' ') 
-           if(!message.channel.guild) return message.reply('** This command only for servers**'); 
-     message.member.addRole(message.guild.roles.find('name', 'Muted'));  
-    const embed500 = new Discord.RichEmbed() 
-      .setTitle("❌ | تمت معاقبتك") 
-            .addField(`** لقد قمت بمخالفة قوانين السيرفر من خلال نشر سيرفرات اخرى  **` , `**ان كأن هاذه الميوت عن طريق الخطأ تواصل مع احد اعضاء الادارة**`) 
-      .addField(`Test`) 
-            .setColor("c91616")
-            .setAuthor(message.author.username, message.author.avatarURL) 
-        .setFooter(`${message.guild.name} Server`)
-     message.channel.send(embed500) 
-    
-        
-    }
-    }
-})//aboodx
+var prefix = "$"
 
+client.on('message', function(msg) {
+    if(msg.content.startsWith (prefix  + 'server')) {
+      let embed = new Discord.RichEmbed()
+      .setColor('RANDOM')
+      .setThumbnail(msg.guild.iconURL)
+      .setTitle(`Showing Details Of  **${msg.guild.name}*`)
+      .addField('🌐** نوع السيرفر**',`[** __${msg.guild.region}__ **]`,true)
+      .addField('🏅** __الرتب__**',`[** __${msg.guild.roles.size}__ **]`,true)
+      .addField('🔴**__ عدد الاعضاء__**',`[** __${msg.guild.memberCount}__ **]`,true)
+      .addField('🔵**__ عدد الاعضاء الاونلاين__**',`[** __${msg.guild.members.filter(m=>m.presence.status == 'online').size}__ **]`,true)
+      .addField('📝**__ الرومات الكتابية__**',`[** __${msg.guild.channels.filter(m => m.type === 'text').size}__** ]`,true)
+      .addField('🎤**__ رومات الصوت__**',`[** __${msg.guild.channels.filter(m => m.type === 'voice').size}__ **]`,true)
+      .addField('👑**__ الأونـر__**',`**${msg.guild.owner}**`,true)
+      .addField('🆔**__ ايدي السيرفر__**',`**${msg.guild.id}**`,true)
+      .addField('📅**__ تم عمل السيرفر في__**',msg.guild.createdAt.toLocaleString())
+      msg.channel.send({embed:embed});
+    }
+  });
 
 client.on('message', message => {
     if (message.author.bot) return;
