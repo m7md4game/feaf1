@@ -7,7 +7,7 @@ client.on('message', message => {
     if(message.author.bot || message.channel.type == "dm") return
     let mention = new Discord.RichEmbed()
     .setColor('BLUE')
-    .setDescription(`**مرحباً .. لرؤية جميع الأوامر من فضلك قم بكتابة \`${prefix}help\`**`)
+    .setDescription(`**\`${prefix}help\`** مرحباً .. لرؤية جميع الأوامر من فضلك قم بكتابة `)
     message.channel.send(mention)
   }
 });
