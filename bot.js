@@ -6,7 +6,37 @@ client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
 });
 
-
+//when a message is sent 'message' event is emitted and we get the message object defined as 'message'
+hero.on('message',async message => {
+// checks if its in dms or the author is a bot it will return nothing
+    if(message.channel.type === 'dm' || message.author.bot) return;
+    // splits the message content
+    let mArray = message.content.split(" ");
+    // checks if the message starts with the prefix if not it will return false
+    let cmd    = mArray[0].startsWith('$') ? mArray[0].substring("$".length) : false;
+    // we get the array of the message content that we split above and get all the elements that aren't the command
+    let args   = mArray.slice(1);
+    // if the cmd is false it will return nothing
+    if(!cmd) return;
+    // we get the message as 1 item in an array but without the command
+    let exp    = message.content.split(cmd);
+    // if the command is "c"
+    if(cmd === 'c') {
+      // if there isn't an expression to calculate it will return nothing
+      if(!args[0]) return;
+      // the regex of a simple expresssion like 1+1
+      let RegEx = /([0-9]{1,5}) ?[*,x,+,\-,/] ?([0-9]{1,5})/g;
+      // it gets an array of the expressions in the message
+      let expr  = await RegEx.exec(exp[1]);
+      // if there isn't it will return false so if its false we send a message
+      if(expr === null || !expr) return message.channel.send(`oh uh, You forgot the expression`);
+      // so we eval the expression because its a string so we eval it and replace the x as * so we get a correct expression
+      let result = eval(expr[0].replace(/x/g, '*'));
+      // finally we send the result in the chat
+      message.channel.send(result);
+     
+    }
+});
 
 
 var prefix = "$";
