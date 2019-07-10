@@ -7,44 +7,14 @@ client.on('ready', () => {
 });
 
 
-
-client.on('message', message=>{ 
-    if(message.author.bot) return; 
-    if(!message.channel.guild) return;
-    if(message.content.startsWith('$setwarns')) { 
-    if(!message.member.hasPermission('ADMINISTRATOR')) return message.reply;
-    let warn = message.guild.channels.find("name", "warns") 
-    if(warn) return message.reply(`**${f} warn is already here**`)  
-    if(!warn) {      
-    message.guild.createChannel("warns", "text").then(c=> { 
-        c.overwritePermissions(message.guild.id, { 
-            SEND_MESSAGES: false
-    })
-})
-message.channel.send(`**${t} | warn was successfully created**`)
-    }
-    } 
-     })
-
-
-client.on('message',  async  message  =>  {
-      let  user  =  message.mentions.users.first();
-      let  reason  =  message.content.split(' ').slice(2).join(' ');
-    if(message.content.startsWith(prefix  +  'warn'))  {
-      message.delete();
-      if(!message.member.hasPermission('MUTE_MEMBERS')) return;
-      if(!user)  return  message.channel.send("**-Mention an Member**")
-      if(!reason)  return  message.channel.send("**-Type Reason**")
-      let  reportembed  =  new  Discord.RichEmbed()
-      .setTitle(`**New  Warned User !**`)
-    .addField("**-Warned  User:**",  `[${user}] ID [${user.id}]`) 
-    .addField('**-Warned  By:**'els.find(`name`, "warns");
-    if(!incidentchannel) return message.channel.send("**Can't find Warns Channel! To Make Type \`-setwarns\`To Make**");
-    incidentchannel.send(reportembed);
-    message.channel.send(`** ${user} has been warned !:warning:**`).then(msg  =>  msg.delete(3000));
-    user.send(`** You are has been warned in ${message.guild.name} reason: ${reason} :warning:**`)
-    }
-    })
+client.on('message', function(msg) {
+  if(msg.content.startsWith ('$voic')) {
+                let foxembed = new Discord.RichEmbed()
+                      .setColor('RANDOM') /// By KillerFox
+    .setDescription(`Voice Online : [ ${msg.guild.members.filter(m => m.voiceChannel).size} ]`)
+    msg.channel.send(foxembed)
+  }
+});
 
 
 var prefix = "$"
