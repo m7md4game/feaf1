@@ -6,12 +6,12 @@ client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
 });
 
-var prefix = "$"
+
 
 client.on('message', message=>{ 
     if(message.author.bot) return; 
     if(!message.channel.guild) return;
-    if(message.content.startsWith(prefix+'setwarns')) { 
+    if(message.content.startsWith('$setwarns')) { 
     if(!message.member.hasPermission('ADMINISTRATOR')) return message.reply;
     let warn = message.guild.channels.find("name", "warns") 
     if(warn) return message.reply(`**${f} warn is already here**`)  
@@ -38,13 +38,7 @@ client.on('message',  async  message  =>  {
       let  reportembed  =  new  Discord.RichEmbed()
       .setTitle(`**New  Warned User !**`)
     .addField("**-Warned  User:**",  `[${user}] ID [${user.id}]`) 
-    .addField('**-Warned  By:**',`[${message.author.tag}] ID [${message.author.id}]`)  
-    .addField('**-Reason:**',  `[${reason}]`,  true)
-    .addField("**-Warned  in:**",`[${message.channel.name}]`)
-    .addField("**-Time & Date:**",`[${message.createdAt}]`)
-    .setFooter("Infinty")
-  .setColor("#f3ae10")
-    let incidentchannel = message.guild.channels.find(`name`, "warns");
+    .addField('**-Warned  By:**'els.find(`name`, "warns");
     if(!incidentchannel) return message.channel.send("**Can't find Warns Channel! To Make Type \`-setwarns\`To Make**");
     incidentchannel.send(reportembed);
     message.channel.send(`** ${user} has been warned !:warning:**`).then(msg  =>  msg.delete(3000));
