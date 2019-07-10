@@ -6,6 +6,27 @@ client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
 });
 
+var prefix = "$"
+
+client.on('message', message=>{ 
+    if(message.author.bot) return; 
+    if(!message.channel.guild) return;
+    if(message.content.startsWith(prefix+'setwarns')) { 
+    if(!message.member.hasPermission('ADMINISTRATOR')) return message.reply;
+    let warn = message.guild.channels.find("name", "warns") 
+    if(warn) return message.reply(`**${f} warn is already here**`)  
+    if(!warn) {      
+    message.guild.createChannel("warns", "text").then(c=> { 
+        c.overwritePermissions(message.guild.id, { 
+            SEND_MESSAGES: false
+    })
+})
+message.channel.send(`**${t} | warn was successfully created**`)
+    }
+    } 
+     })
+
+
 client.on('message',  async  message  =>  {
       let  user  =  message.mentions.users.first();
       let  reason  =  message.content.split(' ').slice(2).join(' ');
