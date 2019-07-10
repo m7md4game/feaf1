@@ -2132,17 +2132,6 @@ if (message.content.startsWith(prefix + "uptime")) {
 }
 });
 
-
-client.on('message', msg => {
-    if(msg.content.startsWith('$link')) {
-    if(msg.channel.type === 'dm') return;
-const user = msg.mentions.users.first();
-if(!user) return msg.channel.send('``' + **`قم بتحديد بوت`** + '``')
-if(!user.bot) return msg.reply('\`منشن بوت\`');
-msg.channel.send(`**Bot InviteURL : ** https://discordapp.com/oauth2/authorize?client_id=${user.id}&scope=bot&permissions=384064`)
-    }
-});
-
 client.on('ready',  () => {
   console.log('By : M7MD4Game');
   console.log(`Logged in as * [ " ${client.user.username} " ] servers! [ " ${client.guilds.size} " ]`);
