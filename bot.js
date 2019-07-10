@@ -130,14 +130,6 @@ client.on('message',async message => {
   })
 
 
-client.on('message', function(msg) {
-  if(msg.content.startsWith ('$voic')) {
-                let foxembed = new Discord.RichEmbed()
-                      .setColor('RANDOM') /// By KillerFox
-    .setDescription(`Voice Online : [ ${msg.guild.members.filter(m => m.voiceChannel).size} ]`)
-    msg.channel.send(foxembed)
-  }
-});
 
 
 var prefix = "$"
@@ -523,6 +515,11 @@ https://discordapp.com/oauth2/authorize?&client_id=526465331997442048&scope=bot&
 『$ban / بان』
 『$mute / ميوت』
 『$unmute / فك الميوت』
+『$setvoice / عدد الاشخاص المتواجدين في الرومات الصوتيه
+『$setmember / عرض عدد اعضاء السيرفر
+『$settime / عرض الوقت الحالي
+『$setdate / عرض التاريخ الحالي
+『$setdays / عرض اليوم الحالي
 『$giveaway / لعمل قيف اواي
 『$add-r / اضافه رتبه』
 『$delet / مسح روم』
