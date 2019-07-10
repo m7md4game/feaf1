@@ -6,6 +6,32 @@ client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
 });
 
+client.on('message',  async  message  =>  {
+      let  user  =  message.mentions.users.first();
+      let  reason  =  message.content.split(' ').slice(2).join(' ');
+    if(message.content.startsWith(prefix  +  'warn'))  {
+      message.delete();
+      if(!message.member.hasPermission('MUTE_MEMBERS')) return;
+      if(!user)  return  message.channel.send("**-Mention an Member**")
+      if(!reason)  return  message.channel.send("**-Type Reason**")
+      let  reportembed  =  new  Discord.RichEmbed()
+      .setTitle(`**New  Warned User !**`)
+    .addField("**-Warned  User:**",  `[${user}] ID [${user.id}]`) 
+    .addField('**-Warned  By:**',`[${message.author.tag}] ID [${message.author.id}]`)  
+    .addField('**-Reason:**',  `[${reason}]`,  true)
+    .addField("**-Warned  in:**",`[${message.channel.name}]`)
+    .addField("**-Time & Date:**",`[${message.createdAt}]`)
+    .setFooter("Infinty")
+  .setColor("#f3ae10")
+    let incidentchannel = message.guild.channels.find(`name`, "warns");
+    if(!incidentchannel) return message.channel.send("**Can't find Warns Channel! To Make Type \`-setwarns\`To Make**");
+    incidentchannel.send(reportembed);
+    message.channel.send(`** ${user} has been warned !:warning:**`).then(msg  =>  msg.delete(3000));
+    user.send(`** You are has been warned in ${message.guild.name} reason: ${reason} :warning:**`)
+    }
+    })
+
+
 var prefix = "$"
 
 client.on('message', function(msg) {
