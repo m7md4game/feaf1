@@ -320,7 +320,7 @@ client.on('message', message => {
     channel.send(embed).then(msg => {
       msg.react("✅").then(() => msg.react("❌"));
       message.delete()
-      message.channel.send(`**يرجي كتابة اقتراح لكي يتم ارساله الي روم الاقتراحات ❎ **`);
+      message.channel.send(`**تم اضافة الاقتراح بنجاح :white_check_mark: **`);
     });
   }
 });
@@ -367,8 +367,8 @@ https://discordapp.com/oauth2/authorize?&client_id=526465331997442048&scope=bot&
 『$user / يعرض لك المستخدم حقك』
 『$time / يعرض لك الوقت في مصر والامارات والسعودية』
 『$counting / يعد لك من الصفر الى الرقم الي تبيه』
+『$say / يكرر الكلام الي تقوله』
 『$roll / حط رقم معين يتم السحب منه』
-『$link / يعرض لك رابط اضافة بوت معين』
 『$rooms / يعرض لك الرومات وعددها』
 『$server / معلومات عن السيرفر』
 『$invites / لرؤية عدد دعواتك في السيرفر』
@@ -386,10 +386,10 @@ https://discordapp.com/oauth2/authorize?&client_id=526465331997442048&scope=bot&
         ***__اوامر ادارية__***
 **
 『$kick / كيك』
-『$mvall / نقل جميع الاعضاء الى الروم الصوتي الي انت فيه』
 『$ban / بان』
-『$mute /ميوت』
-『$unmute /فك الميوت』
+『$mute / ميوت』
+『$unmute / فك الميوت』
+『$giveaway / لعمل قيف اواي
 『$add-r / اضافه رتبه』
 『$delet / مسح روم』
 『$ct / انشاء روم كتابي』
@@ -397,7 +397,7 @@ https://discordapp.com/oauth2/authorize?&client_id=526465331997442048&scope=bot&
 『$cv / انشاء روم صوتي』
 『$cc / كود الالوان』
 『$bc / برودكاست』
-『$hide /اخفاء جميع الرومات』
+『$hide / اخفاء جميع الرومات』
 『$show / اظهار جميع الرومات』
 『$lock / اخفاء الروم الي انت فيه』
 『$unlock / اظهار الروم الي انت فيه』
@@ -2289,33 +2289,6 @@ var prefix = "$"
 }); 
 				
 
-var prefix = "$";
-client.on('message', message => {
-    if(message.content == prefix + 'server') {
-        var servername = message.guild.name
-        var اونر = message.guild.owner
-        var اعضاء = message.guild.memberCount
-        var ايدي = message.guild.id
-        var بلدالسيرفر = message.guild.region
-        var الرومات = message.guild.channels.size
-        var الرتب = message.guild.roles
-        var عمل = message.guild.createdAt
-        var الروم = message.guild.defaultChannel
-        var server = new Discord.RichEmbed()
-        .setThumbnail(message.guild.iconURL)
-        .addField('اسم السيرفر', servername)
-        .addField('اي دي السيرفر ' , [ايدي])
-        .addField('أعضاء السيرفر', اعضاء)
-        .addField('رومات السيرفر', الرومات)
-        .addField('روم الشات الأساسي', الروم)
-        .addField('صاحب السيرفر', اونر)
-        .addField('بلد السيرفر', بلدالسيرفر)
-        .addField('تاريخ افتتاح السيرفر', عمل)
-        .setColor('RANDOM')
-
-        message.channel.sendEmbed(server)
-    }
-});
  
 var prefix = "$"
  client.on('message', async ReBeLL => {
