@@ -13,6 +13,8 @@ client.on('message', message => {
 });
 
 
+var prefix = "$";
+
 client.on('disconnect', () => console.log('I just disconnected, making sure you know, I will reconnect now...'));
  
 client.on('reconnecting', () => console.log('I am reconnecting now!'));
