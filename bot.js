@@ -12,31 +12,20 @@ client.on('message', message => {
   }
 });
 
-client.on('message' , message => {
-      if(message.author.bot) return;
-     
-      if(message.content.startsWith("$rolebc")) {
-        if (!message.member.hasPermission("ADMINISTRATOR"))  return;
-        let args = message.content.split(" ").slice(2);
-     var codes = args.join(' ')
-       
-        if(!codes) {
-          message.channel.send("قم بكتابة الرسالة | `$rolebc role message`")
-            return;
-        }
-     
-     
-              var role = message.mentions.roles.first();
-                if(!role) {
-                  message.reply("لا توجد رتبة بهذا الاسم")
-                    return;
-                }
-            message.guild.members.filter(m => m.roles.get(role.id)).forEach(n => {
-              n.send(`${codes}`)
-            })
-            message.channel.send(`لقد تم ارسال هذه الرسالة الى ${message.guild.members.filter(m => m.roles.get(role.id)).size} عضو`)
-        }
-    }); //Toxic Codes // n3k4a
+﻿client.on("message", message => {
+if(message.content.startsWith("$setnick")){
+if(message.author.bot || message.channel.type == "dm" || !message.member.hasPermission("MANAGE_NICKNAMES") || !message.guild.member(client.user).hasPermission("MANAGE_NICKNAMES")) return;
+var user = message.mentions.members.first();
+var args = message.content.split(" ").slice(2);
+var nick = args.join(" ");
+if(!user || !args) return message.channel.send(`**• | Usage:** ${prefix}setnick \`\`@Name\`\` nickname`);
+if(message.guild.member(user.user).highestRole.position >= message.guild.member(client.user).highestRole.position) return message.channel.send(`⛔ | I cant change **${user.user.username}**'s nickname because his role highest than my role!`);
+message.guild.member(user.user).setNickname(`${nick}`).then(() => {
+message.channel.send(`Successfully changed **${user.user.username}** nickname to **${nick}**`)
+}).catch(console.error); // Toxic Codes
+} // Julian
+}); // Codes
+
  
 client.on("message", message => {
     var prefix = "$";
@@ -699,12 +688,14 @@ https://discordapp.com/oauth2/authorize?&client_id=526465331997442048&scope=bot&
 『$ban / بان』
 『$mute / ميوت』
 『$unmute / فك الميوت』
-『$setvoice / عدد الاشخاص المتواجدين في الرومات الصوتيه
-『$setmember / عرض عدد اعضاء السيرفر
-『$settime / عرض الوقت الحالي
-『$setdate / عرض التاريخ الحالي
-『$setdays / عرض اليوم الحالي
-『$giveaway / لعمل قيف اواي
+『$setvoice / عدد الاشخاص المتواجدين في الرومات الصوتيه』
+『$setmember / عرض عدد اعضاء السيرفر』
+『$settime / عرض الوقت الحالي』
+『$setdate / عرض التاريخ الحالي』
+『$setdays / عرض اليوم الحالي』
+『$role / لاعطاء رتبة ل شخص معين』
+『$roleremove / لحذف رتبة من شخص معين』
+『$giveaway / لعمل قيف اواي』
 『$add-r / اضافه رتبه』
 『$delet / مسح روم』
 『$ct / انشاء روم كتابي』
