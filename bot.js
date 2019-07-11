@@ -713,7 +713,6 @@ https://discordapp.com/oauth2/authorize?&client_id=526465331997442048&scope=bot&
 『$ban / بان』
 『$mute / ميوت』
 『$unmute / فك الميوت』
-『$temp / لإنشاء غرفة مؤقتة صوتية او كتابية』
 『$setnick / لتغيير نك نيم اي شخص』
 『$setvoice / عدد الاشخاص المتواجدين في الرومات الصوتيه』
 『$setmember / عرض عدد اعضاء السيرفر』
