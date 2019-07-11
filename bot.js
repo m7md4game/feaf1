@@ -12,6 +12,26 @@ client.on('message', message => {
   }
 });
 
+
+client.on('message', message => {
+    if(message.content == "$usersinfo") {
+    const mkcode = new Discord.RichEmbed()
+    .setColor('RANDOM')
+    .addField(`All Users Count`,`
+    - Users & Bots: ${client.users.size}
+    - Users: ${client.users.filter(m =>!m.bot).size}
+    - Bots: ${client.users.filter(m=>m.bot).size}`, true)
+    .addField(`All Users Status`,`
+    - Online: ${client.users.filter(m=>m.presence.status == 'online').size}
+    - Offline: ${client.users.filter(m=>m.presence.status == 'offline').size}
+    - Dnd: ${client.users.filter(m=>m.presence.status == 'dnd').size}
+    - Idle: ${client.users.filter(m=>m.presence.status == 'idle').size}`, true)
+        message.channel.send(`- <@${client.user.id}> Users Informations\n- Requested by ${message.author}`,{embed: mkcode});
+        }
+});
+
+
+
 ﻿client.on("message", message => {
 if(message.content.startsWith("$setnick")){
 if(message.author.bot || message.channel.type == "dm" || !message.member.hasPermission("MANAGE_NICKNAMES") || !message.guild.member(client.user).hasPermission("MANAGE_NICKNAMES")) return;
@@ -688,6 +708,7 @@ https://discordapp.com/oauth2/authorize?&client_id=526465331997442048&scope=bot&
 『$ban / بان』
 『$mute / ميوت』
 『$unmute / فك الميوت』
+『$setnick / لتغيير نك نيم اي شخص』
 『$setvoice / عدد الاشخاص المتواجدين في الرومات الصوتيه』
 『$setmember / عرض عدد اعضاء السيرفر』
 『$settime / عرض الوقت الحالي』
