@@ -3,40 +3,20 @@ const client = new Discord.Client();
 const coolDown = new Set(); 
 
 
-
-const safety = JSON.parse(fs.readFileSync('./nomore.json', 'utf8')); //Toixc Codes 
-client.on("message", message =>{//Toixc Codes 
-if(!safety[message.author.id]) {//Toixc Codes 
-safety[message.author.id] = {//Toixc Codes 
-actions: 0
-}}//Toixc Codes 
-})//Toixc Codes 
-// سوي ملف باسم safety.json
-//Toixc Codes 
-client.on('guildMemberRemove', Toxic => {
-Toxic.guild.fetchAuditLogs().then( ac => {//Toixc Codes //Toixc Codes 
-var anti = ac.entries.first();//Toixc Codes 
-if(anti.action == "MEMBER_KICK") {//Toixc Codes 
-if(!safety[anti.executor.id]) {//Toixc Codes //Toixc Codes 
-safety[anti.executor.id] = {//Toixc Codes 
-actions: 0//Toixc Codes //Toixc Codes 
-};
-} else { //Toixc Codes 
-safety[anti.executor.id].actions+=1//Toixc Codes 
-if (safety[anti.executor.id].actions == 5) {//Toixc Codes 
-Toxic.guild.members.get(anti.executor.id).ban("Griefing")//Toixc Codes 
-console.log("banned griefer 1")//Toixc Codes 
-safety[anti.executor.id].actions = 0//Toixc Codes 
-}//Toixc Codes 
-}//Toixc Codes 
-    }//Toixc Codes 
-    });//Toixc Codes 
-    fs.writeFile("./safety.json", JSON.stringify(safety) ,(err) =>{//Toixc Codes 
-        if (err) console.log(err.message);//Toixc Codes 
-    });//Toixc Codes 
-});//Toixc Codes 
-
-
+var prefix = "$";
+client.on('message', async(message) => {
+    if(message.author.juilan || message.channel.type == 'dm') return;
+    let args = message.content.split(' ');
+    if(args[0] == `${prefix}mutech`){
+        if(!message.member.hasPermission('MANAGE_CHANNELS') || !message.guild.me.hasPermission('MANAGE_CHANNELS')) return;
+        await message.channel.overwritePermissions(message.guild.id, { SEND_MESSAGES: false });
+        await message.channel.send(`The channel has been muted.`);
+    } else if(args[0] == `${prefix}unmutech`){
+        if(!message.member.hasPermission('MANAGE_CHANNELS') || !message.guild.me.hasPermission('MANAGE_CHANNELS')) return;
+        await message.channel.overwritePermissions(message.guild.id, { SEND_MESSAGES: null });
+        await message.channel.send(`The channel has been unmuted.`);
+    }
+});
 
 
 
