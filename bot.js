@@ -682,6 +682,48 @@ client.on("message", message => {
 }
 });
 
+
+
+client.on("message", message => {
+ if (message.content === "$ad-help") {
+  const embed = new Discord.RichEmbed() 
+      .setColor("#ffff00")
+      .setThumbnail(message.author.avatarURL)
+      .setDescription(`
+
+
+
+        ***__الاوامر الادارية__***
+**
+『$kick / كيك』
+『$ban / بان』
+『$mute / ميوت』
+『$unmute / فك الميوت』
+『$mutech / لاقفال الشات』
+『$unmutech / لفتح الشات』
+『$setnick / لتغيير نك نيم اي شخص』
+『$setvoice / عدد الاشخاص المتواجدين في الرومات الصوتيه』
+『$setmember / عرض عدد اعضاء السيرفر』
+『$settime / عرض الوقت الحالي』
+『$setdate / عرض التاريخ الحالي』
+『$setdays / عرض اليوم الحالي』
+『$role / لاعطاء رتبة ل شخص معين』
+『$roleremove / لحذف رتبة من شخص معين』
+『$giveaway / لعمل قيف اواي』
+『$add-r / اضافه رتبه』
+『$delet / مسح روم』
+『$ct / انشاء روم كتابي』
+『$cy / انشاء مستند 』
+『$cv / انشاء روم صوتي』
+『$cc / كود الالوان』
+『$bc / برودكاست』
+『$hide / اخفاء جميع الرومات』
+『$show / اظهار جميع الرومات』
+『$lock / اخفاء الروم الي انت فيه』
+『$unlock / اظهار الروم الي انت فيه』
+**`)
+
+
 client.on("message", message => {
  if (message.content === "$help") {
   const embed = new Discord.RichEmbed() 
@@ -723,35 +765,6 @@ https://discordapp.com/oauth2/authorize?&client_id=526465331997442048&scope=bot&
 『$bot / معلومات عن البوت』
 『$date / يعرض لك التاريخ』
 『$ser-av / يعرض لك صورة السيرفر』
-**
-        ***__اوامر ادارية__***
-**
-『$kick / كيك』
-『$ban / بان』
-『$mute / ميوت』
-『$unmute / فك الميوت』
-『$mutech / لاقفال الشات』
-『$unmutech / لفتح الشات』
-『$setnick / لتغيير نك نيم اي شخص』
-『$setvoice / عدد الاشخاص المتواجدين في الرومات الصوتيه』
-『$setmember / عرض عدد اعضاء السيرفر』
-『$settime / عرض الوقت الحالي』
-『$setdate / عرض التاريخ الحالي』
-『$setdays / عرض اليوم الحالي』
-『$role / لاعطاء رتبة ل شخص معين』
-『$roleremove / لحذف رتبة من شخص معين』
-『$giveaway / لعمل قيف اواي』
-『$add-r / اضافه رتبه』
-『$delet / مسح روم』
-『$ct / انشاء روم كتابي』
-『$cy / انشاء مستند 』
-『$cv / انشاء روم صوتي』
-『$cc / كود الالوان』
-『$bc / برودكاست』
-『$hide / اخفاء جميع الرومات』
-『$show / اظهار جميع الرومات』
-『$lock / اخفاء الروم الي انت فيه』
-『$unlock / اظهار الروم الي انت فيه』
 **
         ***__اوامر الالعاب__***
  **       
