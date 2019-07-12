@@ -3,6 +3,27 @@ const client = new Discord.Client();
 const coolDown = new Set(); 
 
 
+client.on('message', function(message) {
+    if (!message.member.hasPermissions(['ADMINISTRATOR'])){
+            let command = message.content.split(" ")[0];
+        if(message.content.includes('discord.gg')){
+        message.reply (' ')
+           if(!message.channel.guild) return message.reply('** This command only for servers**');
+     message.member.addRole(message.guild.roles.find('name', 'Muted'));
+    const embed500 = new Discord.RichEmbed()
+      .setTitle(":x: | تمت معاقبتك")
+            .addField(`** لقد قمت بمخالفة قوانين السيرفر من خلال نشر سيرفرات اخرى  **` , `**ملاحظة  : إن كآن هذآ الميوت عن طريق الخطأ تكلم مع الادآرة**`)
+      .addField(`by`,`ALPHACODES`)
+            .setColor("c91616")
+            .setThumbnail(`${message.author.avatarURL}`)
+            .setAuthor(message.author.username, message.author.avatarURL)
+        .setFooter(`${message.guild.name} Server`)
+     message.channel.send(embed500)
+   
+       
+    }
+    }
+})
 
 client.on('message', message => {
   if(message.content.startsWith(`<@${client.user.id}>`)) {
@@ -49,53 +70,7 @@ message.channel.send(`Successfully changed **${user.user.username}** nickname to
 }); // Codes
 
  
-client.on("message", message => {
-    var prefix = "$";
-    var args = message.content.split(' ').slice(1);
-    var msg = message.content.toLowerCase();
-    if( !message.guild ) return;
-    if( !msg.startsWith( prefix + 'role' ) ) return;
-    if(!message.member.hasPermission('MANAGE_ROLES')) return message.channel.send(' **__You Dont Have Permissions__**');
-    if( msg.toLowerCase().startsWith( prefix + 'roleremove' ) ){
-        if( !args[0] ) return message.reply( '**:x: Mention User**' );
-        if( !args[1] ) return message.reply( '**:x: Write Name Of Role To Remove it From The User**' );
-        var role = msg.split(' ').slice(2).join(" ").toLowerCase();
-        var role1 = message.guild.roles.filter( r=>r.name.toLowerCase().indexOf(role)>-1 ).first();
-        if( !role1 ) return message.reply( '**:x: Mention Role To Remove it From The User**' );if( message.mentions.members.first() ){
-            message.mentions.members.first().removeRole( role1 );
-            return message.reply('**:white_check_mark: Success Removed Role [ '+role1.name+' ] From [ '+args[0]+' ]**');
-        }
-        if( args[0].toLowerCase() == "all" ){
-            message.guild.members.forEach(m=>m.removeRole( role1 ))
-            return  message.reply('**:white_check_mark: Succes Removed Rank [ '+role1.name+' ]  From All**');
-        } else if( args[0].toLowerCase() == "bots" ){
-            message.guild.members.filter(m=>m.user.bot).forEach(m=>m.removeRole(role1))
-            return  message.reply('**:white_check_mark: Succes Removed Rank [ '+role1.name+' ] From All Bots**');
-        } else if( args[0].toLowerCase() == "humans" ){
-            message.guild.members.filter(m=>!m.user.bot).forEach(m=>m.removeRole(role1))
-            return  message.reply('**:white_check_mark: Succes Removed Rank [ '+role1.name+' ] From All Humans**');
-        }  
-    } else {
-        if( !args[0] ) return message.reply( '**:x: Mention User**' );
-        if( !args[1] ) return message.reply( '**:x: Write Name Of Role To Give It To User**' );
-        var role = msg.split(' ').slice(2).join(" ").toLowerCase();
-        var role1 = message.guild.roles.filter( r=>r.name.toLowerCase().indexOf(role)>-1 ).first();
-        if( !role1 ) return message.reply( '**:x: Write Name Of Role To Give It To User**' );if( message.mentions.members.first() ){
-            message.mentions.members.first().addRole( role1 );
-            return message.reply('**:white_check_mark:Success Gived Rank [ '+role1.name+' ] To [ '+args[0]+' ]**');
-        }
-        if( args[0].toLowerCase() == "all" ){
-            message.guild.members.forEach(m=>m.addRole( role1 ))
-            return  message.reply('**:white_check_mark: Success Gived All Rank [ '+role1.name+' ]**');
-        } else if( args[0].toLowerCase() == "bots" ){
-            message.guild.members.filter(m=>m.user.bot).forEach(m=>m.addRole(role1))
-            return  message.reply('**:white_check_mark: Success Gived All Bots Rank [ '+role1.name+' ] **');
-        } else if( args[0].toLowerCase() == "humans" ){
-            message.guild.members.filter(m=>!m.user.bot).forEach(m=>m.addRole(role1))
-            return  message.reply('**:white_check_mark: Success Gived All Humans Rank [ '+role1.name+' ]**');
-        }
-    }
-});
+
 
 
 client.on('message', message => {
@@ -2546,34 +2521,26 @@ client.on('message', message => {
     });
 
 
-client.on('message', message => {
-    var args = message.content.split(/[ ]+/)
-    if(message.content.includes('discord.gg')){
-      if(!message.member.hasPermission('ADMINISTRATOR'))
-        message.delete()
-    return message.reply(`** يمنع نشر الروابط ! **`)
-    }
-});
 
-const adminprefix = "$";
+
 const devs = ['400732890322960411','ايدي الشخص'];
 client.on('message', message => {
   var argresult = message.content.split(` `).slice(1).join(' ');
     if (!devs.includes(message.author.id)) return;
     
-if (message.content.startsWith(adminprefix + 'setgame')) {
+if (message.content.startsWith('$setgame')) {
   client.user.setGame(argresult);
   message.channel.sendMessage(`**✅   ${argresult}**`)
 } else 
-  if (message.content.startsWith(adminprefix + 'setname')) {
+  if (message.content.startsWith('$setname')) {
 client.user.setUsername(argresult).then
     message.channel.sendMessage(`**${argresult}** : تم تغيير أسم البوت إلى`)
 } else
-  if (message.content.startsWith(adminprefix + 'setavatar')) {
+  if (message.content.startsWith('$setavatar')) {
 client.user.setAvatar(argresult);
     message.channel.sendMessage(`**✅   ${argresult}**`)
       } else     
-if (message.content.startsWith(adminprefix + 'sett')) {
+if (message.content.startsWith('$sett')) {
   client.user.setGame(argresult, "https://www.twitch.tv/m7md4game123");//
  message.channel.sendMessage(`**✅   ${argresult}**`)
 }
@@ -2688,7 +2655,7 @@ if (message.content.startsWith(prefix + "uptime")) {
 });
 
 client.on('ready',  () => {
-  console.log('By : M7MD4Game');
+  console.log('By : !KG.Ogami.#0571');
   console.log(`Logged in as * [ " ${client.user.username} " ] servers! [ " ${client.guilds.size} " ]`);
   console.log(`Logged in as * [ " ${client.user.username} " ] Users! [ " ${client.users.size} " ]`);
   console.log(`Logged in as * [ " ${client.user.username} " ] channels! [ " ${client.channels.size} " ]`);
