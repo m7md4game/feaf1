@@ -3,26 +3,6 @@ const client = new Discord.Client();
 const coolDown = new Set(); 
 
 
-var prefix = "$";
-client.on('message', async(message) => {
-    if(message.author.juilan || message.channel.type == 'dm') return;
-    let args = message.content.split(' ');
-    if(args[0] == `${prefix}mutech`){
-        if(!message.member.hasPermission('MANAGE_CHANNELS') || !message.guild.me.hasPermission('MANAGE_CHANNELS')) return;
-        await message.channel.overwritePermissions(message.guild.id, { SEND_MESSAGES: false });
-        await message.channel.send(`The channel has been muted.`);
-    } else if(args[0] == `${prefix}unmutech`){
-        if(!message.member.hasPermission('MANAGE_CHANNELS') || !message.guild.me.hasPermission('MANAGE_CHANNELS')) return;
-        await message.channel.overwritePermissions(message.guild.id, { SEND_MESSAGES: null });
-        await message.channel.send(`The channel has been unmuted.`);
-    }
-});
-
-
-
-
-
-
 
 client.on('message', message => {
   if(message.content.startsWith(`<@${client.user.id}>`)) {
